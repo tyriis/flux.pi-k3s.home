@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - https://github.com/rancher/system-upgrade-controller/releases/download/v0.8.0/system-upgrade-controller.yaml
   - k3s-plan.yaml
+  - raspbian-plan.yaml
