@@ -22,7 +22,7 @@ apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
   name: raspbian
-  namespace: system-update
+  namespace: system-upgrade
 spec:
   concurrency: 1
   nodeSelector:
