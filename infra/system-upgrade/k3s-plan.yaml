@@ -15,6 +15,7 @@ spec:
     matchExpressions:
       - {key: plan.upgrade.cattle.io/k3s, operator: Exists}
       - {key: plan.upgrade.cattle.io/k3s, operator: NotIn, values: ["disabled", "false"]}
+      - {key: k3os.io/mode, operator: DoesNotExist}
       - {key: node-role.kubernetes.io/control-plane, operator: Exists}
   serviceAccountName: system-upgrade
   cordon: true
