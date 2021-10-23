@@ -10,12 +10,11 @@ metadata:
     k3s-upgrade: server
 spec:
   concurrency: 1 # Batch size (roughly maps to maximum number of unschedulable nodes)
-  version: v1.20.11+k3s1
+  version: v1.21.5+k3s2
   nodeSelector:
     matchExpressions:
       - {key: plan.upgrade.cattle.io/k3s, operator: Exists}
       - {key: plan.upgrade.cattle.io/k3s, operator: NotIn, values: ["disabled", "false"]}
-      - {key: k3os.io/mode, operator: DoesNotExist}
       - {key: node-role.kubernetes.io/control-plane, operator: Exists}
   serviceAccountName: system-upgrade
   cordon: true
@@ -31,7 +30,7 @@ metadata:
     k3s-upgrade: agent
 spec:
   concurrency: 1 # Batch size (roughly maps to maximum number of unschedulable nodes)
-  version: v1.20.11+k3s1
+  version: v1.21.5+k3s2
   nodeSelector:
     matchExpressions:
       - {key: plan.upgrade.cattle.io/k3s, operator: Exists}
