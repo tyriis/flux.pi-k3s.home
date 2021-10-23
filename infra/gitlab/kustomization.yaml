@@ -4,4 +4,3 @@ resources:
   - namespace.yaml
   - k8s-home-cert-sealed.yaml
   - gitlab-runner-certs-sealed.yaml
-  - gitlab.yaml
