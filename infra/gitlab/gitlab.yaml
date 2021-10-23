@@ -17,7 +17,7 @@ spec:
   timeout: 15m0s
   install:
     crds: Create
-  targetNamespace: monitoring
+  targetNamespace: gitlab
   upgrade:
     crds: CreateReplace
   values:
