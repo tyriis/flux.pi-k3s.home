@@ -25,7 +25,7 @@ spec:
       hosts:
         domain: k8s.home
       ingress:
-        configureCertmanager: "false"
+        configureCertmanager: false
         class: traefik
         annotations:
           traefik.ingress.kubernetes.io/redirect-entry-point: https
@@ -33,10 +33,10 @@ spec:
         tls:
           secretName: k8s-home-cert
       pages:
-        enabled: "true"
+        enabled: true
 
     certmanager:
-      install: "false"
+      install: false
 
     gitlab:
       gitlab-pages:
@@ -48,4 +48,4 @@ spec:
       certsSecretName: gitlab-runner-certs
 
     nginx-ingress:
-      enabled: "false"
+      enabled: false
