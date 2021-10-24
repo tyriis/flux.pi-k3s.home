@@ -44,7 +44,7 @@ spec:
           readOnly: false
         - naem: mem
           mountPath: /dev/mem
-          readOnly: true
+          readOnly: false
       terminationGracePeriodSeconds: 30
       volumes:
       - name: export
