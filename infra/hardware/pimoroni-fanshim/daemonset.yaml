@@ -23,7 +23,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: pimoroni-fanshim
-        image: docker pull testingtony/fanshim
+        image: testingtony/fanshim
         imagePullPolicy: Always
         resources:
           limits:
