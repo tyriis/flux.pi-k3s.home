@@ -30,11 +30,11 @@ spec:
         imagePullPolicy: Always
         resources:
           limits:
-            cpu: 1000m
-            memory: 100Mi
+            cpu: 100m
+            memory: 10Mi
           requests:
             cpu: 100m
-            memory: 100Mi
+            memory: 10Mi
         volumeMounts:
         - name: export
           mountPath: /sys/class/gpio/export
@@ -52,3 +52,4 @@ spec:
         hostPath:
           path: /sys/class/gpio/gpio18
           type: ''
+      - name: thermal_zone0
