@@ -52,4 +52,3 @@ spec:
         hostPath:
           path: /sys/class/gpio/gpio18
           type: ''
-      - name: thermal_zone0
