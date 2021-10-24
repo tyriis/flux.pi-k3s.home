@@ -32,4 +32,13 @@ spec:
           requests:
             cpu: 100m
             memory: 100Mi
+        volumeMounts:
+        - name: gpio_export
+          mountPath: /sys/class/gpio/export
+          readOnly: false
       terminationGracePeriodSeconds: 30
+      volumes:
+      - name: gpio_export
+        hostPath:
+          path: /sys/class/gpio/export
+          type: ''
