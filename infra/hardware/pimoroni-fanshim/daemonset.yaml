@@ -44,7 +44,7 @@ spec:
         - name: gpio18
           mountPath: /sys/class/gpio/gpio18
           readOnly: false
-        - naem: mem
+        - name: mem
           mountPath: /dev/mem
           readOnly: false
       terminationGracePeriodSeconds: 30
