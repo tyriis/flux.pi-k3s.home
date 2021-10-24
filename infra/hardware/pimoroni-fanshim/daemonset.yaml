@@ -24,6 +24,9 @@ spec:
       containers:
       - name: pimoroni-fanshim
         image: testingtony/fanshim
+        envFrom:
+        - configMapRef:
+          name: pimoroni-fanshim
         imagePullPolicy: Always
         resources:
           limits:

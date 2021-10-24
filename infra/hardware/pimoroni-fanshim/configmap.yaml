@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pimoroni-fanshim
+  namespace: hardware
+data:
+  ON_TEMP: 25  # 60
+  OFF_TEMP: 20  # 50
+  FAN_PIN: 18
