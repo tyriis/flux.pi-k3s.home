@@ -23,8 +23,8 @@ spec:
         effect: NoSchedule
       containers:
       - name: pimoroni-fanshim
-        securityContext:
-          privileged: true
+        # securityContext:
+        #   privileged: true
         image: tyriis/test:4
         envFrom:
         - configMapRef:
