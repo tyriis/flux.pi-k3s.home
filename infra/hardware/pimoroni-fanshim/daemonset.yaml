@@ -23,8 +23,8 @@ spec:
         effect: NoSchedule
       containers:
       - name: pimoroni-fanshim
-        # securityContext:
-        #   privileged: true
+        securityContext:
+          privileged: true
         image: tyriis/test:4
         envFrom:
         - configMapRef:
@@ -37,27 +37,27 @@ spec:
           requests:
             cpu: 100m
             memory: 100Mi
-        volumeMounts:
-        - name: export
-          mountPath: /sys/class/gpio/export
-          readOnly: false
-        - name: gpio18
-          mountPath: /sys/class/gpio/gpio18
-          readOnly: false
-        - name: mem
-          mountPath: /dev/mem
-          readOnly: false
+        #volumeMounts:
+        #- name: export
+        #  mountPath: /sys/class/gpio/export
+        #  readOnly: false
+        #- name: gpio18
+        #  mountPath: /sys/class/gpio/gpio18
+        #  readOnly: false
+        #- name: mem
+        #  mountPath: /dev/mem
+        #  readOnly: false
       terminationGracePeriodSeconds: 30
-      volumes:
-      - name: export
-        hostPath:
-          path: /sys/class/gpio/export
-          type: ''
-      - name: gpio18
-        hostPath:
-          path: /sys/class/gpio/gpio18
-          type: ''
-      - name: mem
-        hostPath:
-          path: /dev/mem
-          type: ''
+      #volumes:
+      #- name: export
+      #  hostPath:
+      #    path: /sys/class/gpio/export
+      #    type: ''
+      #- name: gpio18
+      #  hostPath:
+      #    path: /sys/class/gpio/gpio18
+      #    type: ''
+      #- name: mem
+      #  hostPath:
+      #    path: /dev/mem
+      #    type: ''
