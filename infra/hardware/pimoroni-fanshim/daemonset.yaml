@@ -42,6 +42,9 @@ spec:
         - name: gpio18
           mountPath: /sys/class/gpio/gpio18
           readOnly: false
+        - naem: mem
+          mountPath: /dev/mem
+          readOnly: true
       terminationGracePeriodSeconds: 30
       volumes:
       - name: export
@@ -51,4 +54,8 @@ spec:
       - name: gpio18
         hostPath:
           path: /sys/class/gpio/gpio18
+          type: ''
+      - name: mem
+        hostPath:
+          path: /dev/mem
           type: ''
