@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: pimoroni-fanshim
+  namespace: hardware
+  labels:
+    app: pimoroni-fanshim
+spec:
+  selector:
+    matchLabels:
+      name: pimoroni-fanshim
+  template:
+    metadata:
+      labels:
+        name: pimoroni-fanshim
+    spec:
+      tolerations:
+      # this toleration is to have the daemonset runnable on master nodes
+      # remove it if your masters can't run pods
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - name: pimoroni-fanshim
+        image: docker pull testingtony/fanshim
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 100Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+      terminationGracePeriodSeconds: 30
