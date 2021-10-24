@@ -23,7 +23,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: pimoroni-fanshim
-        image: tyriis/test:3
+        image: tyriis/test:4
         envFrom:
         - configMapRef:
             name: pimoroni-fanshim
