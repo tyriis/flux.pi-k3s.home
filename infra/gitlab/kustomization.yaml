@@ -3,7 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - namespace.yaml
-  - k8s-home-cert-sealed.yaml
-  - gitlab-runner-certs-sealed.yaml
-  - gitlab-deployment.yaml
-  - gitlab-service.yaml
+  #  - k8s-home-cert-sealed.yaml
+  #  - gitlab-runner-certs-sealed.yaml
+  #  - gitlab-deployment.yaml
+  #  - gitlab-service.yaml
