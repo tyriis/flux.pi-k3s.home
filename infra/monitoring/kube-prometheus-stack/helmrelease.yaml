@@ -1,0 +1,130 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 1h0m0s
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: '>=19.2.2'
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  timeout: 15m0s
+  values:
+    prometheus:
+      prometheusSpec:
+        ruleSelector: {}
+        ruleNamespaceSelector: {}
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelector: {}
+        serviceMonitorNamespaceSelector: {}
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelector: {}
+        podMonitorNamespaceSelector: {}
+        podMonitorSelectorNilUsesHelmValues: false
+        retention: 30d
+        enableAdminAPI: true
+        walCompression: true
+
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: local-path
+              resources:
+                requests:
+                  storage: 15Gi
+
+    alertmanager:
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: local-path
+              resources:
+                requests:
+                  storage: 10Gi
+
+    nodeExporter:
+      serviceMonitor:
+        relabelings:
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels:
+              - __meta_kubernetes_pod_node_name
+            targetLabel: kubernetes_node
+
+    grafana:
+      enabled: true
+      # serviceMonitor:
+      #   enabled: true # if enabled chart fails :/
+      sidecar:
+        dashboards:
+          enabled: true
+        datasources:
+          enabled: true
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+            - name: default
+              orgId: 1
+              folder: ''
+              type: file
+              disableDeletion: true
+              allowUiUpdates: false
+              options:
+                path: /tmp/dashboards
+            - name: flux
+              orgId: 1
+              folder: Flux
+              type: file
+              disableDeletion: false
+              allowUiUpdates: true
+              options:
+                path: /var/lib/grafana/dashboards/flux
+      dashboards:
+        flux:
+          flux-cluster:
+            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
+            datasource: Prometheus
+          flux-control-plane:
+            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
+            datasource: Prometheus
+          # Ref: https://grafana.com/grafana/dashboards/11074
+          "1 Node Exporter for Prometheus Dashboard EN v20201010":
+            gnetId: 11074
+            revision: 9
+            datasource: Prometheus
+
+      ingress:
+        enabled: false
+
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          - action: replace
+            sourceLabels:
+              - node
+            targetLabel: instance
+
+    kubeApiServer:
+      enabled: true
+
+    kubeControllerManager:
+      enabled: false
+
+    kubeScheduler:
+      enabled: false
+
+    kubeProxy:
+      enabled: false
+
+    kubeEtcd:
+      enabled: false
