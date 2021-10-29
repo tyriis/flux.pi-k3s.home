@@ -1,42 +1,42 @@
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: raspbian-upgrade
-  namespace: system-upgrade
-type: Opaque
-stringData:
-  upgrade.sh: |
-    #!/bin/sh
-    set -e
-    export DEBIAN_FRONTEND=noninteractive
-    sudo apt-get --assume-yes update
-    sudo apt-get --assume-yes upgrade
-    sudo apt-get --assume-yes autoremove
-    if [ -f /run/reboot-required ]; then
-      cat /run/reboot-required
-      sudo reboot
-    fi
----
-apiVersion: upgrade.cattle.io/v1
-kind: Plan
-metadata:
-  name: raspbian-upgrade
-  namespace: system-upgrade
-spec:
-  concurrency: 1
-  nodeSelector:
-    matchExpressions:
-      - {key: plan.upgrade.cattle.io/raspbian, operator: Exists}
-      - {key: plan.upgrade.cattle.io/raspbian, operator: NotIn, values: ["disabled", "false"]}
-  serviceAccountName: system-upgrade
-  secrets:
-    - name: raspbian-upgrade
-      # optional: default=/run/system-upgrade/secrets/{name}
-      path: /host/run/system-upgrade/secrets/raspbian
-  drain:
-    force: true
-  upgrade:
-    image: debian:buster-slim
-    command: ["chroot", "/host"]
-    args: ["sh", "/run/system-upgrade/secrets/raspbian/upgrade.sh"]
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: raspbian-upgrade
+#   namespace: system-upgrade
+# type: Opaque
+# stringData:
+#   upgrade.sh: |
+#     #!/bin/sh
+#     set -e
+#     export DEBIAN_FRONTEND=noninteractive
+#     sudo apt-get --assume-yes update
+#     sudo apt-get --assume-yes upgrade
+#     sudo apt-get --assume-yes autoremove
+#     if [ -f /run/reboot-required ]; then
+#       cat /run/reboot-required
+#       sudo reboot
+#     fi
+# ---
+# apiVersion: upgrade.cattle.io/v1
+# kind: Plan
+# metadata:
+#   name: raspbian-upgrade
+#   namespace: system-upgrade
+# spec:
+#   concurrency: 1
+#   nodeSelector:
+#     matchExpressions:
+#       - {key: plan.upgrade.cattle.io/raspbian, operator: Exists}
+#       - {key: plan.upgrade.cattle.io/raspbian, operator: NotIn, values: ["disabled", "false"]}
+#   serviceAccountName: system-upgrade
+#   secrets:
+#     - name: raspbian-upgrade
+#       # optional: default=/run/system-upgrade/secrets/{name}
+#       path: /host/run/system-upgrade/secrets/raspbian
+#   drain:
+#     force: true
+#   upgrade:
+#     image: debian:buster-slim
+#     command: ["chroot", "/host"]
+#     args: ["sh", "/run/system-upgrade/secrets/raspbian/upgrade.sh"]
