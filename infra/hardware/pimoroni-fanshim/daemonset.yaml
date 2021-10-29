@@ -25,18 +25,18 @@ spec:
       - name: pimoroni-fanshim
         securityContext:
           privileged: true
-        image: tyriis/test:4
+        image: tyriis/test:5
         envFrom:
         - configMapRef:
             name: pimoroni-fanshim
         imagePullPolicy: Always
         resources:
           limits:
-            cpu: 1000m
-            memory: 1000Mi
+            cpu: 100m
+            memory: 25Mi
           requests:
             cpu: 100m
-            memory: 100Mi
+            memory: 15Mi
         #volumeMounts:
         #- name: export
         #  mountPath: /sys/class/gpio/export
