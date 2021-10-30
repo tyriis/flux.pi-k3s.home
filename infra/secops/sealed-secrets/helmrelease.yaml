@@ -3,7 +3,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: sealed-secrets
-  namespace: flux-system
 spec:
   chart:
     spec:
@@ -11,11 +10,13 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: sealed-secrets
-      version: '>=1.15.0-0'
+        namespace: flux-system
+      version: '>=1.16.1'
   install:
     crds: Create
   interval: 5m0s
   releaseName: sealed-secrets-controller
-  targetNamespace: flux-system
+  targetNamespace: secops
   upgrade:
     crds: CreateReplace
+  timeout: 15m0s
