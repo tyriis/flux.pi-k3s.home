@@ -31,7 +31,7 @@ kubectl create secret -n gitlab tls k8s-home-cert --key=".k8s.home_host_key.pem"
 ```sh
 kubeseal --fetch-cert \
 --controller-name=sealed-secrets-controller \
---controller-namespace=flux-system \
+--controller-namespace=secops \
 > pub-sealed-secrets.pem
 ```
 
