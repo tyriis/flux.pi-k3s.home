@@ -17,14 +17,14 @@ kubectl label node pi-node02 plan.upgrade.cattle.io/raspbian=true
 kubectl label node pi-node03 plan.upgrade.cattle.io/raspbian=true
 ```
 
-### retrieve self-signed trusted cs certs
+### retrieve self-signed trusted ca certs
 ```sh
-openssl req -new -newkey rsa:2048 -keyout .k8s.home_host_key.pem -nodes -subj "/CN=*.k8s.home" |   curl -v -fk --data-binary @- -o k8s.home_host.pem "https://cubietruck/sign?ns=*.k8s.home"
+openssl req -new -newkey rsa:2048 -keyout k8s-home.key -nodes -subj "/CN=*.k8s.home" |   curl -v -fk --data-binary @- -o k8s-home.crt "https://cubietruck/sign?ns=*.k8s.home"
 ```
 
 ### create cert from files
 ```sh
-kubectl create secret -n gitlab tls k8s-home-cert --key=".k8s.home_host_key.pem" --cert="k8s.home_host.pem" --dry-run=client -o yaml > k8s-home-cert.yaml
+kubectl create secret tls -n monitoring k8s-home-cert --key="k8s-home.key" --cert="k8s-home.crt" --dry-run=client -o yaml > k8s-home-cert.yaml
 ```
 
 ### retrieve selaed pub-sealed-secrets.pem
@@ -38,7 +38,7 @@ kubeseal --fetch-cert \
 ### seal secret
 ```sh
 kubeseal --format=yaml --cert=pub-sealed-secrets.pem \
-< certificate.yaml > certificate.yaml
+< certificate.yaml > sealed-certificate.yaml
 ```
 
 ### create gitlab runner certs
