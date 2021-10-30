@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - sealed-secrets/helmrelease.yaml
+  - sops/sealed-secret-sops-gpg.yaml
