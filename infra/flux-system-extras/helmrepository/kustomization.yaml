@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - sealed-secrets.yaml
   - hashicorp.yaml
+  - ricoberger.yaml
   - prometheus-community.yaml
   - grafana.yaml
