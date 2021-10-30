@@ -2,8 +2,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./crds
-  # - sealed-kube-prometheus-stack-values.yaml
+  - crds
   - helmrelease.yaml
   - prometheus-rules/node-exporter.yaml
-  - podmonitor_flux.yaml
+  - podmonitor-flux-system.yaml
