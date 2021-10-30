@@ -163,7 +163,7 @@ spec:
       enabled: false
     test: "${SECRET_GRAFANA_PASSWORD}"
 
-  valuesFrom:
-    - kind: Secret
-      name: "kube-prometheus-stack-values"
-      optional: false
+  # valuesFrom:
+  #   - kind: Secret
+  #     name: "kube-prometheus-stack-values"
+  #     optional: false
