@@ -68,6 +68,7 @@ spec:
 
     grafana:
       enabled: true
+      adminPassword: "{SECRET_GRAFANA_PASSWORD}"
       # serviceMonitor:
       #   enabled: true # if enabled chart fails :/
       grafana.ini:
