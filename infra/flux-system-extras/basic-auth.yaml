@@ -1,41 +1,41 @@
-# yamllint disable
-apiVersion: v1
-data:
-    password: ENC[AES256_GCM,data:e5xDztrEPixgg2Q7,iv:WrSgRAQNfLoT7iUwTeL5dg24QBty6MInnzjiKQTMpnw=,tag:D3p78maoE2Lgtl+3tMFBVg==,type:str]
-    user: ENC[AES256_GCM,data:xnr3JU4SxPM=,iv:ZSWGvrPqVwx2QR/oO6e30aBc1MYe9R+JZ2sH9Qg5G8g=,tag:FXT0BJvhoqhtUZ2V9Vc7Fg==,type:str]
-kind: Secret
-metadata:
-    creationTimestamp: null
-    name: basic-auth
-    namespace: default
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age: []
-    lastmodified: "2021-10-30T16:50:57Z"
-    mac: ENC[AES256_GCM,data:XRj3Vzbvjd0ANj9OBnrHSgNe8l9X1kud7irgfKjYiqDE9ffAL7VWuAyDUo5jCEcOykLkztVMvfUU/bSXuG6krn8BSYcNJRP+neifJK0/HgDo/HdNQ9NEKY2JIa0JifduI/fLZw9fBog7JrJEjj6FnKx0FrwOzULo3klzvTy9zgo=,iv:xPaea6HSLuKjIBLpIcZtm+AtU52EpJjmyz/WVpNWAzU=,tag:kCh1Gc/VhB1G7IxglIa2hQ==,type:str]
-    pgp:
-        - created_at: "2021-10-30T16:47:24Z"
-          enc: |
-            -----BEGIN PGP MESSAGE-----
+# # yamllint disable
+# apiVersion: v1
+# data:
+#     password: ENC[AES256_GCM,data:e5xDztrEPixgg2Q7,iv:WrSgRAQNfLoT7iUwTeL5dg24QBty6MInnzjiKQTMpnw=,tag:D3p78maoE2Lgtl+3tMFBVg==,type:str]
+#     user: ENC[AES256_GCM,data:xnr3JU4SxPM=,iv:ZSWGvrPqVwx2QR/oO6e30aBc1MYe9R+JZ2sH9Qg5G8g=,tag:FXT0BJvhoqhtUZ2V9Vc7Fg==,type:str]
+# kind: Secret
+# metadata:
+#     creationTimestamp: null
+#     name: basic-auth
+#     namespace: default
+# sops:
+#     kms: []
+#     gcp_kms: []
+#     azure_kv: []
+#     hc_vault: []
+#     age: []
+#     lastmodified: "2021-10-30T16:50:57Z"
+#     mac: ENC[AES256_GCM,data:XRj3Vzbvjd0ANj9OBnrHSgNe8l9X1kud7irgfKjYiqDE9ffAL7VWuAyDUo5jCEcOykLkztVMvfUU/bSXuG6krn8BSYcNJRP+neifJK0/HgDo/HdNQ9NEKY2JIa0JifduI/fLZw9fBog7JrJEjj6FnKx0FrwOzULo3klzvTy9zgo=,iv:xPaea6HSLuKjIBLpIcZtm+AtU52EpJjmyz/WVpNWAzU=,tag:kCh1Gc/VhB1G7IxglIa2hQ==,type:str]
+#     pgp:
+#         - created_at: "2021-10-30T16:47:24Z"
+#           enc: |
+#             -----BEGIN PGP MESSAGE-----
 
-            hQIMAw9wKWM7W8MAARAAimdDuq9p7zCmCUUN/tEF9csdpz/HRpnv0XbChu65VZMv
-            I3FuF/HDdlu4lIjKAC8Tpbb24pfJ/yeLtIpbhVMDU7/XeAhjS5xJOwPTLfJM1QHy
-            nV5eSYwLzkCxTAIB3QDr53GsiUK/uPdgQHhjCHUHnP3iteBgZFejuJDY4Wk4nrmD
-            9DgyTGXxJKZILSY2Fona0TYUYTLsIc8tQ/GrMdsVb1a9NMgKXGwxcOAMNmCs7bzo
-            yIjPMdccH9ys4I22/LY0oCrSePM8le7vl8AocRaMM7wINlwWdE2FbLYVN4dJkWS3
-            +4i4rBrWrEGG+3UBLdipGzVimtMjFPfvRjvw5VgX72wWbV/eE6DB+qb1VPZh6e5s
-            lbSXiphL1040CwKvwy0rRYs7kvbEHDpxUGMvv2nKaMAeIZ5thLzSoTEauZENL3VK
-            5p7dRf9vcpJMx4Egr8Pk2orbi+hGSXyyWFYqD2oSbE2M7AnYRxxaqwrxgYJ22XNd
-            R78InMxCgmVN9c0UAgr0l6igsQweKrnEAwP/JTRt30rKtY3mc/FzJoMCn39li3Dw
-            ggRV10jJ3IR4wPctmy086FXYNLpOixGBokfXWpXKh3+ykJSEAbNMaGJRMXG9jpJ4
-            FNGCyZHlrFdlt7DPlnialHIBlO8enLVl8sVtVO0WcsCvO9uuYVB0KFUqmYx4POHS
-            XAE9wr5Omt/wGbspP82Y8TNR4oSWE1PGKY0UqVLGif/FS2qTXN6znObtmX5qWa+N
-            q6EvlM6ds4nonXdgEMDw1bDtuAW/kXWjwiFpGPBwsUmAL0lIwVeFOM7qP1pL
-            =+828
-            -----END PGP MESSAGE-----
-          fp: 1900124F3275C622D268CB0D2DCDE5F0F958D3FF
-    encrypted_regex: ^(data|stringData)$
-    version: 3.7.1
+#             hQIMAw9wKWM7W8MAARAAimdDuq9p7zCmCUUN/tEF9csdpz/HRpnv0XbChu65VZMv
+#             I3FuF/HDdlu4lIjKAC8Tpbb24pfJ/yeLtIpbhVMDU7/XeAhjS5xJOwPTLfJM1QHy
+#             nV5eSYwLzkCxTAIB3QDr53GsiUK/uPdgQHhjCHUHnP3iteBgZFejuJDY4Wk4nrmD
+#             9DgyTGXxJKZILSY2Fona0TYUYTLsIc8tQ/GrMdsVb1a9NMgKXGwxcOAMNmCs7bzo
+#             yIjPMdccH9ys4I22/LY0oCrSePM8le7vl8AocRaMM7wINlwWdE2FbLYVN4dJkWS3
+#             +4i4rBrWrEGG+3UBLdipGzVimtMjFPfvRjvw5VgX72wWbV/eE6DB+qb1VPZh6e5s
+#             lbSXiphL1040CwKvwy0rRYs7kvbEHDpxUGMvv2nKaMAeIZ5thLzSoTEauZENL3VK
+#             5p7dRf9vcpJMx4Egr8Pk2orbi+hGSXyyWFYqD2oSbE2M7AnYRxxaqwrxgYJ22XNd
+#             R78InMxCgmVN9c0UAgr0l6igsQweKrnEAwP/JTRt30rKtY3mc/FzJoMCn39li3Dw
+#             ggRV10jJ3IR4wPctmy086FXYNLpOixGBokfXWpXKh3+ykJSEAbNMaGJRMXG9jpJ4
+#             FNGCyZHlrFdlt7DPlnialHIBlO8enLVl8sVtVO0WcsCvO9uuYVB0KFUqmYx4POHS
+#             XAE9wr5Omt/wGbspP82Y8TNR4oSWE1PGKY0UqVLGif/FS2qTXN6znObtmX5qWa+N
+#             q6EvlM6ds4nonXdgEMDw1bDtuAW/kXWjwiFpGPBwsUmAL0lIwVeFOM7qP1pL
+#             =+828
+#             -----END PGP MESSAGE-----
+#           fp: 1900124F3275C622D268CB0D2DCDE5F0F958D3FF
+#     encrypted_regex: ^(data|stringData)$
+#     version: 3.7.1
