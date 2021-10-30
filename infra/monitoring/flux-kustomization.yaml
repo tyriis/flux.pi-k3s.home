@@ -6,8 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  dependsOn:
-  - name: flux-system
+  # dependsOn:
+  # - name: flux-system
   path: ./infra/monitoring
   prune: false
   sourceRef:
