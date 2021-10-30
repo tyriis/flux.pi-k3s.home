@@ -4,4 +4,7 @@ kind: Kustomization
 resources:
   - helmrepository
   - cluster-secrets.yaml
+  - hardware.yaml
+  - secops.yaml
   - monitoring.yaml
+  - system-upgrade.yaml
