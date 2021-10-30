@@ -70,18 +70,6 @@ spec:
       enabled: true
       # serviceMonitor:
       #   enabled: true # if enabled chart fails :/
-      grafana.ini:
-        server:
-          root_url: https://monitoring.home.techtales.io
-        auth.google:
-          enabled: true
-          client_id: xxxxxxx
-          client_secret: xxxxxx
-          scopes: https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
-          auth_url: https://accounts.google.com/o/oauth2/auth
-          token_url: https://accounts.google.com/o/oauth2/token
-          allowed_domains: monitoring.home.techtales.io
-          allow_sign_up: true
 
       sidecar:
         dashboards:
