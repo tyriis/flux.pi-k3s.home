@@ -23,10 +23,10 @@ spec:
         # storageClass: "rook-ceph-block"
       # extraEnvironmentVars:
       #   GOOGLE_APPLICATION_CREDENTIALS: /vault/userconfig/kms-vault/account.json
-      extraVolumes:
-        - type: secret
-          name: kms-vault
-          path: /vault/userconfig
+      #extraVolumes:
+      #  - type: secret
+      #    name: kms-vault
+      #    path: /vault/userconfig
       # tolerations: |
       #   - key: "arm"
       #     operator: "Exists"
