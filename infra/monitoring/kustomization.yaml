@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - flux-kustomization.yaml
   - namespace.yaml
-  # - sealed-tls-cert.yaml
-  # - kube-prometheus-stack
+  - sealed-tls-cert.yaml
+  - kube-prometheus-stack
