@@ -150,6 +150,7 @@ spec:
 
     kubeEtcd:
       enabled: false
+    test: "${SECRET_GRAFANA_PASSWORD}"
 
   valuesFrom:
     - kind: Secret
