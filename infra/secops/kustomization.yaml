@@ -4,3 +4,4 @@ metadata:
   namespace: secops
 resources:
   - namespace.yaml
+  - sealed-secrets/helmrelease.yaml
