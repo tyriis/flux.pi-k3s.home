@@ -21,7 +21,8 @@ spec:
       dataStorage:
         enabled: true
         # storageClass: "rook-ceph-block"
-      # extraEnvironmentVars:
+      extraEnvironmentVars:
+        VAULT_TOKEN: "${SECRET_VAULT_TOKEN}"
       #   GOOGLE_APPLICATION_CREDENTIALS: /vault/userconfig/kms-vault/account.json
       #extraVolumes:
       #  - type: secret
@@ -47,15 +48,29 @@ spec:
           enabled: true
           setNodeId: true
           config: |
+            disable_mlock = true
             ui = true
+
+            storage "file" {
+              path = "/vault/data"
+            }
+
+            seal "transit" {
+              address = "${SECRET_VAULT_URL}"
+              disable_renewal = "false"
+              key_name = "autounseal"
+              mount_path = "transit/"
+              tls_skip_verify = "true"
+            }
+
             listener "tcp" {
               tls_disable = 1
               address = "[::]:8200"
               cluster_address = "[::]:8201"
             }
-            storage "raft" {
-              path = "/vault/data"
-            }
+            # storage "raft" {
+            #   path = "/vault/data"
+            # }
             #seal "gcpckms" {
             #  project     = "kms-vault"
             #  region      = "global"
