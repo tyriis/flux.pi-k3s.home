@@ -111,7 +111,19 @@ spec:
             datasource: Prometheus
 
       ingress:
-        enabled: false
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/frontend-entry-points: http,https
+          traefik.ingress.kubernetes.io/redirect-entry-point: https
+          traefik.ingress.kubernetes.io/redirect-permanent: "true"
+        hosts:
+          - monitoring.home.techtales.io
+        path: /
+        tls:
+          - secretName: tls-cert
+            hosts:
+              - monitoring.home.techtales.io
 
     kubelet:
       enabled: true
