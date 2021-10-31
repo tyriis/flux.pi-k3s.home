@@ -172,6 +172,3 @@ spec:
                   type: string
       subresources:
         status: {}
-  conversion:
-    strategy: None
-  preserveUnknownFields: true
