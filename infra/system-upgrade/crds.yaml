@@ -172,3 +172,9 @@ spec:
                   type: string
       subresources:
         status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
