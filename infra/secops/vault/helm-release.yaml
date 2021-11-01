@@ -70,6 +70,31 @@ spec:
 
             storage "raft" {
               path = "/vault/data"
+
+              retry_join {
+                leader_api_addr = "https://vault-0.vault-internal:8200"
+                # leader_ca_cert_file = "/vault/userconfig/tls-ca/ca.crt"
+                # leader_client_cert_file = "/vault/userconfig/tls-server/server.crt"
+                # leader_client_key_file = "/vault/userconfig/tls-server/server.key"
+                tls_disable = 1
+              }
+
+              retry_join {
+                leader_api_addr = "https://vault-1.vault-internal:8200"
+                # leader_ca_cert_file = "/vault/userconfig/tls-ca/ca.crt"
+                # leader_client_cert_file = "/vault/userconfig/tls-server/server.crt"
+                # leader_client_key_file = "/vault/userconfig/tls-server/server.key"
+                tls_disable = 1
+              }
+
+              autopilot {
+                cleanup_dead_servers = "true"
+                last_contact_threshold = "200ms"
+                last_contact_failure_threshold = "10m"
+                max_trailing_logs = 250000
+                min_quorum = 5
+                server_stabilization_time = "10s"
+              }
             }
 
             listener "tcp" {
@@ -81,4 +106,6 @@ spec:
             service_registration "kubernetes" {}
     ui:
       enabled: true
-      serviceType: "ClusterIP"
+      serviceType: "LoadBalancer"
+      serviceNodePort: null
+      externalPort: 8200
