@@ -22,10 +22,11 @@ spec:
     config:
       storage_config:
         aws:
-          bucketnames: loki
-          endpoint: nas.home:9000
-          access_key_id: "${SECRET_MINIO_ACCESS_KEY}"
-          secret_access_key: "${SECRET_MINIO_SECRET_KEY}"
+          s3: "s3://${SECRET_MINIO_ACCESS_KEY}:${SECRET_MINIO_SECRET_KEY}@https://nas.home:9000/logs"
+          # bucketnames: loki
+          # endpoint: nas.home:9000
+          # access_key_id: "${SECRET_MINIO_ACCESS_KEY}"
+          # secret_access_key: "${SECRET_MINIO_SECRET_KEY}"
           s3forcepathstyle: true
           insecure: true
         boltdb_shipper:
