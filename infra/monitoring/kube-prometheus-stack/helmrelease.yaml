@@ -68,7 +68,7 @@ spec:
 
     grafana:
       enabled: true
-      adminPassword: "{SECRET_GRAFANA_PASSWORD}"
+      adminPassword: "${SECRET_GRAFANA_PASSWORD}"
       # serviceMonitor:
       #   enabled: true # if enabled chart fails :/
       grafana.ini:
@@ -162,7 +162,6 @@ spec:
 
     kubeEtcd:
       enabled: false
-    test: "${SECRET_GRAFANA_PASSWORD}"
 
   # valuesFrom:
   #   - kind: Secret
