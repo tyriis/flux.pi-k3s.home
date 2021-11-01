@@ -48,12 +48,8 @@ spec:
           enabled: true
           setNodeId: true
           config: |
-            disable_mlock = true
+            # disable_mlock = true
             ui = true
-
-            # storage "file" {
-            #   path = "/vault/data"
-            # }
 
             seal "transit" {
               address = "${SECRET_VAULT_URL}"
@@ -63,22 +59,16 @@ spec:
               tls_skip_verify = "true"
             }
 
+            storage "raft" {
+              path = "/vault/data"
+            }
+
             listener "tcp" {
               tls_disable = 1
               address = "[::]:8200"
               cluster_address = "[::]:8201"
             }
 
-            storage "raft" {
-              path = "/vault/data"
-            }
-
-            #seal "gcpckms" {
-            #  project     = "kms-vault"
-            #  region      = "global"
-            #  key_ring    = "vault-unseal"
-            #  crypto_key  = "vault-key"
-            #}
             service_registration "kubernetes" {}
     ui:
       enabled: true
