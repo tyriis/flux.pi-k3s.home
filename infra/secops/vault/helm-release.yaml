@@ -1,75 +1,75 @@
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: vault
-  namespace: secops
-spec:
-  interval: 5m
-  chart:
-    spec:
-      # renovate: registryUrl=https://helm.releases.hashicorp.com
-      chart: vault
-      version: 0.17.1
-      sourceRef:
-        kind: HelmRepository
-        name: hashicorp
-        namespace: flux-system
-      interval: 5m
-  values:
-    server:
-      dataStorage:
-        enabled: true
-        # storageClass: "rook-ceph-block"
-      extraEnvironmentVars:
-        VAULT_TOKEN: "${SECRET_VAULT_TOKEN}"
-      #   GOOGLE_APPLICATION_CREDENTIALS: /vault/userconfig/kms-vault/account.json
-      #extraVolumes:
-      #  - type: secret
-      #    name: kms-vault
-      #    path: /vault/userconfig
-      # tolerations: |
-      #   - key: "arm"
-      #     operator: "Exists"
-      # annotations:
-      #   backup.velero.io/backup-volumes: data
-      resources:
-        requests:
-          memory: 256Mi
-          cpu: 250m
-        limits:
-          memory: 256Mi
-      standalone:
-        enabled: false
-      ha:
-        enabled: true
-        replicas: 2
-        raft:
-          enabled: true
-          setNodeId: true
-          config: |
-            # disable_mlock = true
-            ui = true
+# ---
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: vault
+#   namespace: secops
+# spec:
+#   interval: 5m
+#   chart:
+#     spec:
+#       # renovate: registryUrl=https://helm.releases.hashicorp.com
+#       chart: vault
+#       version: 0.17.1
+#       sourceRef:
+#         kind: HelmRepository
+#         name: hashicorp
+#         namespace: flux-system
+#       interval: 5m
+#   values:
+#     server:
+#       dataStorage:
+#         enabled: true
+#         # storageClass: "rook-ceph-block"
+#       extraEnvironmentVars:
+#         VAULT_TOKEN: "${SECRET_VAULT_TOKEN}"
+#       #   GOOGLE_APPLICATION_CREDENTIALS: /vault/userconfig/kms-vault/account.json
+#       #extraVolumes:
+#       #  - type: secret
+#       #    name: kms-vault
+#       #    path: /vault/userconfig
+#       # tolerations: |
+#       #   - key: "arm"
+#       #     operator: "Exists"
+#       # annotations:
+#       #   backup.velero.io/backup-volumes: data
+#       resources:
+#         requests:
+#           memory: 256Mi
+#           cpu: 250m
+#         limits:
+#           memory: 256Mi
+#       standalone:
+#         enabled: false
+#       ha:
+#         enabled: true
+#         replicas: 2
+#         raft:
+#           enabled: true
+#           setNodeId: true
+#           config: |
+#             # disable_mlock = true
+#             ui = true
 
-            seal "transit" {
-              address = "${SECRET_VAULT_URL}"
-              disable_renewal = "false"
-              key_name = "autounseal"
-              mount_path = "transit/"
-              tls_skip_verify = "true"
-            }
+#             seal "transit" {
+#               address = "${SECRET_VAULT_URL}"
+#               disable_renewal = "false"
+#               key_name = "autounseal"
+#               mount_path = "transit/"
+#               tls_skip_verify = "true"
+#             }
 
-            storage "raft" {
-              path = "/vault/data"
-            }
+#             storage "raft" {
+#               path = "/vault/data"
+#             }
 
-            listener "tcp" {
-              tls_disable = 1
-              address = "[::]:8200"
-              cluster_address = "[::]:8201"
-            }
+#             listener "tcp" {
+#               tls_disable = 1
+#               address = "[::]:8200"
+#               cluster_address = "[::]:8201"
+#             }
 
-            service_registration "kubernetes" {}
-    ui:
-      enabled: true
-      serviceType: "ClusterIP"
+#             service_registration "kubernetes" {}
+#     ui:
+#       enabled: true
+#       serviceType: "ClusterIP"
