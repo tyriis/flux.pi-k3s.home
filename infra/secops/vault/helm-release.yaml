@@ -48,7 +48,7 @@ spec:
           enabled: true
           setNodeId: true
           config: |
-            # disable_mlock = true
+            disable_mlock = true
             ui = true
 
             seal "transit" {
