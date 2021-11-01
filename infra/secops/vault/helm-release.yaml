@@ -51,9 +51,9 @@ spec:
             disable_mlock = true
             ui = true
 
-            storage "file" {
-              path = "/vault/data"
-            }
+            # storage "file" {
+            #   path = "/vault/data"
+            # }
 
             seal "transit" {
               address = "${SECRET_VAULT_URL}"
@@ -68,9 +68,11 @@ spec:
               address = "[::]:8200"
               cluster_address = "[::]:8201"
             }
-            # storage "raft" {
-            #   path = "/vault/data"
-            # }
+
+            storage "raft" {
+              path = "/vault/data"
+            }
+
             #seal "gcpckms" {
             #  project     = "kms-vault"
             #  region      = "global"
