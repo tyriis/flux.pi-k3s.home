@@ -6,3 +6,4 @@ resources:
   - tls-cert.yaml
   - kube-prometheus-stack
   - loki
+  - promtail
