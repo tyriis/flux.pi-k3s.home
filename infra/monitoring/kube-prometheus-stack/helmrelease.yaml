@@ -19,7 +19,6 @@
 #     crds: Create
 #   upgrade:
 #     crds: CreateReplace
-#   timeout: 15m0s
 #   values:
 #     prometheus:
 #       prometheusSpec:
