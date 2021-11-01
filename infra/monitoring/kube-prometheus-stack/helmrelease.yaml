@@ -1,169 +1,169 @@
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: kube-prometheus-stack
-  namespace: monitoring
-spec:
-  interval: 5m0s
-  chart:
-    spec:
-      chart: kube-prometheus-stack
-      version: '>=19.2.2'
-      sourceRef:
-        kind: HelmRepository
-        name: prometheus-community
-        namespace: flux-system
-      interval: 1m
-  install:
-    crds: Create
-  upgrade:
-    crds: CreateReplace
-  timeout: 15m0s
-  values:
-    prometheus:
-      prometheusSpec:
-        ruleSelector: {}
-        ruleNamespaceSelector: {}
-        ruleSelectorNilUsesHelmValues: false
-        serviceMonitorSelector: {}
-        serviceMonitorNamespaceSelector: {}
-        serviceMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelector:
-          matchLabels:
-            app.kubernetes.io/part-of: flux
-        podMonitorNamespaceSelector: {}
-        podMonitorSelectorNilUsesHelmValues: false
-        retention: 30d
-        enableAdminAPI: true
-        walCompression: true
+# ---
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: kube-prometheus-stack
+#   namespace: monitoring
+# spec:
+#   interval: 5m0s
+#   chart:
+#     spec:
+#       chart: kube-prometheus-stack
+#       version: '>=19.2.2'
+#       sourceRef:
+#         kind: HelmRepository
+#         name: prometheus-community
+#         namespace: flux-system
+#       interval: 1m
+#   install:
+#     crds: Create
+#   upgrade:
+#     crds: CreateReplace
+#   timeout: 15m0s
+#   values:
+#     prometheus:
+#       prometheusSpec:
+#         ruleSelector: {}
+#         ruleNamespaceSelector: {}
+#         ruleSelectorNilUsesHelmValues: false
+#         serviceMonitorSelector: {}
+#         serviceMonitorNamespaceSelector: {}
+#         serviceMonitorSelectorNilUsesHelmValues: false
+#         podMonitorSelector:
+#           matchLabels:
+#             app.kubernetes.io/part-of: flux
+#         podMonitorNamespaceSelector: {}
+#         podMonitorSelectorNilUsesHelmValues: false
+#         retention: 30d
+#         enableAdminAPI: true
+#         walCompression: true
 
-        storageSpec:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: local-path
-              resources:
-                requests:
-                  storage: 15Gi
+#         storageSpec:
+#           volumeClaimTemplate:
+#             spec:
+#               storageClassName: local-path
+#               resources:
+#                 requests:
+#                   storage: 15Gi
 
-    alertmanager:
-      alertmanagerSpec:
-        storage:
-          volumeClaimTemplate:
-            spec:
-              storageClassName: local-path
-              resources:
-                requests:
-                  storage: 10Gi
+#     alertmanager:
+#       alertmanagerSpec:
+#         storage:
+#           volumeClaimTemplate:
+#             spec:
+#               storageClassName: local-path
+#               resources:
+#                 requests:
+#                   storage: 10Gi
 
-    nodeExporter:
-      serviceMonitor:
-        relabelings:
-          - action: replace
-            regex: (.*)
-            replacement: $1
-            sourceLabels:
-              - __meta_kubernetes_pod_node_name
-            targetLabel: kubernetes_node
+#     nodeExporter:
+#       serviceMonitor:
+#         relabelings:
+#           - action: replace
+#             regex: (.*)
+#             replacement: $1
+#             sourceLabels:
+#               - __meta_kubernetes_pod_node_name
+#             targetLabel: kubernetes_node
 
-    grafana:
-      enabled: true
-      adminPassword: "${SECRET_GRAFANA_PASSWORD}"
-      # serviceMonitor:
-      #   enabled: true # if enabled chart fails :/
-      grafana.ini:
-        server:
-          root_url: "https://grafana.home.${SECRET_DOMAIN}"
-        auth.google:
-          enabled: true
-          client_id: "${SECRET_GRAFANA_OAUTH_CLIENT_ID}"
-          client_secret: "${SECRET_GRAFANA_OAUTH_CLIENT_SECRET}"
-          scopes: https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
-          auth_url: https://accounts.google.com/o/oauth2/auth
-          token_url: https://accounts.google.com/o/oauth2/token
-          allowed_domains: "${SECRET_DOMAIN}"
-          allow_sign_up: true
-      sidecar:
-        dashboards:
-          enabled: true
-          searchNamespace: ALL
-        datasources:
-          enabled: true
-      dashboardProviders:
-        dashboardproviders.yaml:
-          apiVersion: 1
-          providers:
-            - name: default
-              orgId: 1
-              folder: ''
-              type: file
-              disableDeletion: true
-              allowUiUpdates: false
-              options:
-                path: /tmp/dashboards
-            - name: flux
-              orgId: 1
-              folder: Flux
-              type: file
-              disableDeletion: false
-              allowUiUpdates: true
-              options:
-                path: /var/lib/grafana/dashboards/flux
-      dashboards:
-        flux:
-          flux-cluster:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
-            datasource: Prometheus
-          flux-control-plane:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
-            datasource: Prometheus
-          # Ref: https://grafana.com/grafana/dashboards/11074
-          "1 Node Exporter for Prometheus Dashboard EN v20201010":
-            gnetId: 11074
-            revision: 9
-            datasource: Prometheus
+#     grafana:
+#       enabled: true
+#       adminPassword: "${SECRET_GRAFANA_PASSWORD}"
+#       # serviceMonitor:
+#       #   enabled: true # if enabled chart fails :/
+#       grafana.ini:
+#         server:
+#           root_url: "https://grafana.home.${SECRET_DOMAIN}"
+#         auth.google:
+#           enabled: true
+#           client_id: "${SECRET_GRAFANA_OAUTH_CLIENT_ID}"
+#           client_secret: "${SECRET_GRAFANA_OAUTH_CLIENT_SECRET}"
+#           scopes: https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
+#           auth_url: https://accounts.google.com/o/oauth2/auth
+#           token_url: https://accounts.google.com/o/oauth2/token
+#           allowed_domains: "${SECRET_DOMAIN}"
+#           allow_sign_up: true
+#       sidecar:
+#         dashboards:
+#           enabled: true
+#           searchNamespace: ALL
+#         datasources:
+#           enabled: true
+#       dashboardProviders:
+#         dashboardproviders.yaml:
+#           apiVersion: 1
+#           providers:
+#             - name: default
+#               orgId: 1
+#               folder: ''
+#               type: file
+#               disableDeletion: true
+#               allowUiUpdates: false
+#               options:
+#                 path: /tmp/dashboards
+#             - name: flux
+#               orgId: 1
+#               folder: Flux
+#               type: file
+#               disableDeletion: false
+#               allowUiUpdates: true
+#               options:
+#                 path: /var/lib/grafana/dashboards/flux
+#       dashboards:
+#         flux:
+#           flux-cluster:
+#             url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
+#             datasource: Prometheus
+#           flux-control-plane:
+#             url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
+#             datasource: Prometheus
+#           # Ref: https://grafana.com/grafana/dashboards/11074
+#           "1 Node Exporter for Prometheus Dashboard EN v20201010":
+#             gnetId: 11074
+#             revision: 9
+#             datasource: Prometheus
 
-      ingress:
-        enabled: true
-        annotations:
-          kubernetes.io/ingress.class: traefik
-          traefik.ingress.kubernetes.io/router.tls: "true"
-          traefik.ingress.kubernetes.io/frontend-entry-points: http,https
-          traefik.ingress.kubernetes.io/redirect-entry-point: https
-          traefik.ingress.kubernetes.io/redirect-permanent: "true"
-        hosts:
-          - "grafana.home.${SECRET_DOMAIN}"
-        path: /
-        tls:
-          - secretName: tls-cert
-            hosts:
-              - "grafana.home.${SECRET_DOMAIN}"
+#       ingress:
+#         enabled: true
+#         annotations:
+#           kubernetes.io/ingress.class: traefik
+#           traefik.ingress.kubernetes.io/router.tls: "true"
+#           traefik.ingress.kubernetes.io/frontend-entry-points: http,https
+#           traefik.ingress.kubernetes.io/redirect-entry-point: https
+#           traefik.ingress.kubernetes.io/redirect-permanent: "true"
+#         hosts:
+#           - "grafana.home.${SECRET_DOMAIN}"
+#         path: /
+#         tls:
+#           - secretName: tls-cert
+#             hosts:
+#               - "grafana.home.${SECRET_DOMAIN}"
 
-    kubelet:
-      enabled: true
-      serviceMonitor:
-        metricRelabelings:
-          - action: replace
-            sourceLabels:
-              - node
-            targetLabel: instance
+#     kubelet:
+#       enabled: true
+#       serviceMonitor:
+#         metricRelabelings:
+#           - action: replace
+#             sourceLabels:
+#               - node
+#             targetLabel: instance
 
-    kubeApiServer:
-      enabled: true
+#     kubeApiServer:
+#       enabled: true
 
-    kubeControllerManager:
-      enabled: false
+#     kubeControllerManager:
+#       enabled: false
 
-    kubeScheduler:
-      enabled: false
+#     kubeScheduler:
+#       enabled: false
 
-    kubeProxy:
-      enabled: false
+#     kubeProxy:
+#       enabled: false
 
-    kubeEtcd:
-      enabled: false
+#     kubeEtcd:
+#       enabled: false
 
-  # valuesFrom:
-  #   - kind: Secret
-  #     name: "kube-prometheus-stack-values"
-  #     optional: false
+#   # valuesFrom:
+#   #   - kind: Secret
+#   #     name: "kube-prometheus-stack-values"
+#   #     optional: false
