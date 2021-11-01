@@ -107,5 +107,5 @@ spec:
     ui:
       enabled: true
       serviceType: "ClusterIP"
-      # serviceNodePort: null
-      # externalPort: 8200
+      serviceNodePort: null
+      externalPort: 8200
