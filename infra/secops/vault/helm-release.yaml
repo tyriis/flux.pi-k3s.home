@@ -23,16 +23,6 @@ spec:
         # storageClass: "rook-ceph-block"
       extraEnvironmentVars:
         VAULT_TOKEN: "${SECRET_VAULT_TOKEN}"
-      #   GOOGLE_APPLICATION_CREDENTIALS: /vault/userconfig/kms-vault/account.json
-      #extraVolumes:
-      #  - type: secret
-      #    name: kms-vault
-      #    path: /vault/userconfig
-      # tolerations: |
-      #   - key: "arm"
-      #     operator: "Exists"
-      # annotations:
-      #   backup.velero.io/backup-volumes: data
       resources:
         requests:
           memory: 256Mi
@@ -73,3 +63,20 @@ spec:
     ui:
       enabled: true
       serviceType: "ClusterIP"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/frontend-entry-points: http,https
+        traefik.ingress.kubernetes.io/redirect-entry-point: https
+        traefik.ingress.kubernetes.io/redirect-permanent: "true"
+      hosts:
+        - "vault.home.${SECRET_DOMAIN}"
+      paths:
+        - /
+        - /vault
+      tls:
+        - secretName: tls-cert
+          hosts:
+            - "vault.home.${SECRET_DOMAIN}"
