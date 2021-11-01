@@ -32,7 +32,7 @@ spec:
           - host: "vault.home.${SECRET_DOMAIN}"
             paths:
               - /
-              - /vault
+              # - /vault
         tls:
           - secretName: tls-cert
             hosts:
@@ -106,6 +106,6 @@ spec:
             service_registration "kubernetes" {}
     ui:
       enabled: true
-      serviceType: "LoadBalancer"
-      serviceNodePort: null
-      externalPort: 8200
+      serviceType: "ClusterIP"
+      # serviceNodePort: null
+      # externalPort: 8200
