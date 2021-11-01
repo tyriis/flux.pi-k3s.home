@@ -22,9 +22,9 @@ spec:
     config:
       storage_config:
         aws:
-          s3: "s3://${SECRET_MINIO_ACCESS_KEY}:${SECRET_MINIO_SECRET_KEY}@https://nas.home:9000/logs"
+          s3: "s3://${SECRET_MINIO_ACCESS_KEY}:${SECRET_MINIO_SECRET_KEY}@https://nas.home:9000/loki"
           bucketnames: loki
-          endpoint: s3://nas.home:9000
+          endpoint: nas.home:9000
           access_key_id: "${SECRET_MINIO_ACCESS_KEY}"
           secret_access_key: "${SECRET_MINIO_SECRET_KEY}"
           s3forcepathstyle: true
