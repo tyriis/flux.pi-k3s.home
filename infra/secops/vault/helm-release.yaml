@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    metrics:
+      enabled: true
     server:
       dataStorage:
         enabled: true
@@ -65,6 +67,7 @@ spec:
       serviceType: "ClusterIP"
     ingress:
       enabled: true
+      ingressClassName: traefik
       annotations:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.tls: "true"
@@ -72,10 +75,10 @@ spec:
         traefik.ingress.kubernetes.io/redirect-entry-point: https
         traefik.ingress.kubernetes.io/redirect-permanent: "true"
       hosts:
-        - "vault.home.${SECRET_DOMAIN}"
-      paths:
-        - /
-        - /vault
+        - host: "vault.home.${SECRET_DOMAIN}"
+          paths:
+            - /
+            - /vault
       tls:
         - secretName: tls-cert
           hosts:
