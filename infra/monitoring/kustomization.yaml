@@ -5,5 +5,5 @@ resources:
   - namespace.yaml
   - tls-cert.yaml
   # - kube-prometheus-stack
-  - loki
-  - promtail
+  # - loki
+  # - promtail
