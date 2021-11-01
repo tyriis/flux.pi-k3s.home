@@ -20,6 +20,24 @@ spec:
     metrics:
       enabled: true
     server:
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/router.tls: "true"
+          traefik.ingress.kubernetes.io/frontend-entry-points: http,https
+          traefik.ingress.kubernetes.io/redirect-entry-point: https
+          traefik.ingress.kubernetes.io/redirect-permanent: "true"
+        hosts:
+          - host: "vault.home.${SECRET_DOMAIN}"
+            paths:
+              - /
+              - /vault
+        tls:
+          - secretName: tls-cert
+            hosts:
+              - "vault.home.${SECRET_DOMAIN}"
       dataStorage:
         enabled: true
         # storageClass: "rook-ceph-block"
@@ -65,21 +83,3 @@ spec:
     ui:
       enabled: true
       serviceType: "ClusterIP"
-    ingress:
-      enabled: true
-      ingressClassName: traefik
-      annotations:
-        kubernetes.io/ingress.class: traefik
-        traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/frontend-entry-points: http,https
-        traefik.ingress.kubernetes.io/redirect-entry-point: https
-        traefik.ingress.kubernetes.io/redirect-permanent: "true"
-      hosts:
-        - host: "vault.home.${SECRET_DOMAIN}"
-          paths:
-            - /
-            - /vault
-      tls:
-        - secretName: tls-cert
-          hosts:
-            - "vault.home.${SECRET_DOMAIN}"
