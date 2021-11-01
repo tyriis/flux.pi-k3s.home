@@ -20,8 +20,6 @@ spec:
     image:
       repository: ghcr.io/k8s-at-home/loki
     config:
-      ruler_client:
-        tls_insecure_skip_verify: true
       storage_config:
         aws:
           s3: s3://nas.home:9000/loki
