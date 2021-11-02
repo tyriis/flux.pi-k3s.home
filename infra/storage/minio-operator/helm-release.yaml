@@ -49,8 +49,8 @@ spec:
         tls:
           - secretName: tls-cert
             hosts:
-              - "minio.home.${SECRET_DOMAAIN}"
-        host: "minio.home.${SECRET_DOMAAIN}"
+              - "minio.home.${SECRET_DOMAIN}"
+        host: "minio.home.${SECRET_DOMAIN}"
         path: /
 
     tenants:
