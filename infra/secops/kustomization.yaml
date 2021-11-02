@@ -4,4 +4,4 @@ resources:
   - namespace.yaml
   - tls-cert.yaml
   - vault
-  - vault-secrets-operator
+  # - vault-secrets-operator
