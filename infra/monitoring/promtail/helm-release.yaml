@@ -35,13 +35,25 @@ spec:
                 target_label: 'unit'
               - source_labels: ['__journal__hostname']
                 target_label: 'hostname'
+          - job_name: dmesg
+            static_configs:
+              - targets: [localhost]
+                labels:
+                  job: dmesg
+                  __path__: /var/log/kern.log
     extraVolumes:
       - name: journal
         hostPath:
           path: /var/log/journal
+      - name: dmesg
+        hostPath:
+          path: /var/log/kern.log
     extraVolumeMounts:
       - name: journal
         mountPath: /var/log/journal
+        readOnly: true
+      - name: dmesg
+        mountPath: /var/log/kern.log
         readOnly: true
     serviceMonitor:
       enabled: true
