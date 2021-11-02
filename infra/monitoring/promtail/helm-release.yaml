@@ -48,7 +48,7 @@ spec:
                 labels:
                   job: dmesg
                   __path__: /var/log/kern.log
-                  # hostname: ${VAR:HOSTNAME}
+                  # hostname: ${HOSTNAME}
                   cluster: pi-k3s
     extraVolumes:
       - name: journal
