@@ -30,20 +30,22 @@ spec:
               max_age: 12h
               labels:
                 job: systemd-journal
+                cluster: pi-cluster
             relabel_configs:
               - source_labels: ['__journal__systemd_unit']
                 target_label: 'unit'
               - source_labels: ['__journal__hostname']
                 target_label: 'hostname'
+              - source_labels: ['__journal_syslog_identifier']
+                target_label: syslog_identifier
           - job_name: dmesg
             dmesg:
               path: /var/log/kern.log
               max_age: 12h
               labels:
+                cluster: pi-cluster
                 job: dmesg
-            relabel_configs:
-              - source_labels: ['__host__']
-                target_label: 'hostname'
+                hostname: __host__
     extraVolumes:
       - name: journal
         hostPath:
