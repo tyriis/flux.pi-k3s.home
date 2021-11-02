@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: minio
+  name: bitnami
   namespace: flux-system
 spec:
   interval: 10m
-  url: https://operator.min.io/
+  url: https://charts.bitnami.com/bitnami
   timeout: 3m

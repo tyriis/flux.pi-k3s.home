@@ -5,6 +5,6 @@ resources:
   - hashicorp.yaml
   - ricoberger.yaml
   - nfs-subdir-external-provisioner.yaml
-  - minio.yaml
+  - bitnami.yaml
   - prometheus-community.yaml
   - grafana.yaml
