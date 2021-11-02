@@ -31,7 +31,7 @@ spec:
       #     value: "minio.home.techtales.io"
       #   - name: WATCHED_NAMESPACE
       #     value: ""
-    replicaCount: 1
+      replicaCount: 1
 
     console:
       # image:
