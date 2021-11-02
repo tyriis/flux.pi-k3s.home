@@ -24,9 +24,9 @@ spec:
       # image:
       #   repository: minio/operator
       #   tag: v4.3.2
-      # env:
-      #   - name: MINIO_OPERATOR_TLS_ENABLE
-      #     value: "off"
+      env:
+        - name: MINIO_OPERATOR_TLS_ENABLE
+          value: "off"
       #   - name: CLUSTER_DOMAIN
       #     value: "minio.home.techtales.io"
       #   - name: WATCHED_NAMESPACE
