@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - hashicorp.yaml
   - ricoberger.yaml
+  - nfs-subdir-external-provisioner.yaml
+  - minio.yaml
   - prometheus-community.yaml
   - grafana.yaml
-  - minio.yaml
