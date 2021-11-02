@@ -6,3 +6,4 @@ resources:
   - ricoberger.yaml
   - prometheus-community.yaml
   - grafana.yaml
+  - minio.yaml
