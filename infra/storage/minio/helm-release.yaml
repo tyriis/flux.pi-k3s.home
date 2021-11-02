@@ -17,6 +17,9 @@ spec:
   releaseName: minio
   targetNamespace: storage
   values:
+    image:
+      repository: minio/minio
+      tag: RELEASE.2021-10-23T03-28-24Z
     # https://github.com/bitnami/charts/blob/master/bitnami/minio/values.yaml
     statefulset:
       replicaCount: 3
