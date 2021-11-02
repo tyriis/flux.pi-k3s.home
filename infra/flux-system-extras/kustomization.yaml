@@ -7,5 +7,6 @@ resources:
   - helmrepository
   - secops.yaml
   - hardware.yaml
+  - storage.yaml
   - monitoring.yaml
   - system-upgrade.yaml
