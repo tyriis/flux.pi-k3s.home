@@ -5,3 +5,4 @@ resources:
   - tls-cert.yaml
   - vault
   - vault-secrets-operator
+  - test.yaml
