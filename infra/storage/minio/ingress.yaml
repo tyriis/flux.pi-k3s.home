@@ -30,4 +30,4 @@ spec:
   tls:
     - secretName: tls-cert
       hosts:
-        - "grafana.home.${SECRET_DOMAIN}"
+        - "minio.home.${SECRET_DOMAIN}"
