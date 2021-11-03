@@ -26,7 +26,7 @@ spec:
       tag: RELEASE.2021-10-23T03-28-24Z
     replicas: 3
     ingress:
-      enabled: true
+      enabled: false
       hostname: "mini.home.${SECRET_DOMAIN}"
       annotations:
         kubernetes.io/ingress.class: traefik
