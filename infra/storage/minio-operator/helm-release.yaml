@@ -1,0 +1,54 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio-operator
+  namespace: storage
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: minio-operator
+      version: 4.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: minio
+        namespace: flux-system
+      interval: 5m
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  values:
+    operator:
+      # image:
+      #   repository: minio/operator
+      #   tag: v4.3.2
+      env:
+        - name: MINIO_OPERATOR_TLS_ENABLE
+          value: "off"
+      #   - name: CLUSTER_DOMAIN
+      #     value: "minio.home.techtales.io"
+      #   - name: WATCHED_NAMESPACE
+      #     value: ""
+      replicaCount: 1
+
+    console:
+      # image:
+      #   repository: minio/console
+      #   tag: v0.10.0
+      ingress:
+        enabled: true
+        labels: {}
+        annotations:
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/router.tls: "true"
+          traefik.ingress.kubernetes.io/frontend-entry-points: http,https
+          traefik.ingress.kubernetes.io/redirect-entry-point: https
+          traefik.ingress.kubernetes.io/redirect-permanent: "true"
+        tls:
+          - secretName: tls-cert
+            hosts:
+              - "minio.home.${SECRET_DOMAIN}"
+        host: "minio.home.${SECRET_DOMAIN}"
+        path: /
