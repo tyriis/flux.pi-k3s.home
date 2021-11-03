@@ -10,34 +10,44 @@ spec:
       chart: minio
       sourceRef:
         kind: HelmRepository
-        name: bitnami
+        name: minio
         namespace: flux-system
-      version: '>=9.0.6'
+      version: '>=8.0.9'
   interval: 5m0s
   releaseName: minio
   targetNamespace: storage
   values:
+    # https://github.com/minio/charts/blob/master/minio/values.yaml
     image:
       repository: minio/minio
       tag: RELEASE.2021-10-23T03-28-24Z
-    # https://github.com/bitnami/charts/blob/master/bitnami/minio/values.yaml
-    statefulset:
-      replicaCount: 3
+    mcImage:
+      repository: minio/minio
+      tag: RELEASE.2021-10-23T03-28-24Z
+    replicas: 3
     ingress:
       enabled: true
-      ingressClassName: traefik
       hostname: "mini.home.${SECRET_DOMAIN}"
       annotations:
-        # kubernetes.io/ingress.class: traefik
+        kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.tls: "true"
         traefik.ingress.kubernetes.io/frontend-entry-points: http,https
         traefik.ingress.kubernetes.io/redirect-entry-point: https
         traefik.ingress.kubernetes.io/redirect-permanent: "true"
-      tls: false
+      path: /
+      hosts:
+        - "mini.home.${SECRET_DOMAIN}"
+      tls:
+        - secretName: tls-cert
+          hosts:
+            - "mini.home.${SECRET_DOMAIN}"
     persistence:
       enabled: true
       storageClass: nas-nfs
-      size: 20Gi
+      size: 100Gi
     metrics:
       serviceMonitor:
         enabled: true
+    resources:
+      requests:
+        memory: 256Mi
