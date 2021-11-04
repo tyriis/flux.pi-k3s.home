@@ -28,8 +28,11 @@ spec:
         traefik.ingress.kubernetes.io/redirect-permanent: "true"
       hosts:
         - host: "openfaas.home.${SECRET_DOMAIN}"
-          paths:
-            - /
+          serviceName: gateway
+          servicePort: 8080
+          path: /
+          # paths:
+          #   - /
       tls:
         - secretName: tls-cert
           hosts:
