@@ -17,9 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    generateBasicAuth: true
+    generateBasicAuth: false
     ingress:
-      enabled: true
+      enabled: false
       annotations:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.tls: "true"
