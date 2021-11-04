@@ -9,3 +9,4 @@ resources:
   - minio-operator.yaml
   - prometheus-community.yaml
   - grafana.yaml
+  - openfaas.yaml

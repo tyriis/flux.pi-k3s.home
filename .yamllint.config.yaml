@@ -1,3 +1,4 @@
+---
 # see https://yamllint.readthedocs.io/en/stable/index.html for more options
 extends: default
 rules:

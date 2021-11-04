@@ -10,7 +10,7 @@ spec:
     - name: flux-system
     - name: flux-system-extras
   path: ./infra/hardware
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system

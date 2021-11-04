@@ -2,14 +2,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: system-upgrade
+  name: openfaas
   namespace: flux-system
 spec:
   interval: 10m0s
   dependsOn:
     - name: flux-system
     - name: flux-system-extras
-  path: ./infra/system-upgrade
+    - name: secops
+  path: ./infra/openfaas
   prune: true
   sourceRef:
     kind: GitRepository

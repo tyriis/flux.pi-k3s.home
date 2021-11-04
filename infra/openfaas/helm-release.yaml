@@ -1,0 +1,55 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vault
+  namespace: openfaas
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://openfaas.github.io/faas-netes/
+      chart: openfaas
+      version: 8.1.3
+      sourceRef:
+        kind: HelmRepository
+        name: openfaas
+        namespace: flux-system
+      interval: 5m
+  values:
+    generateBasicAuth: true
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/frontend-entry-points: http,https
+        traefik.ingress.kubernetes.io/redirect-entry-point: https
+        traefik.ingress.kubernetes.io/redirect-permanent: "true"
+      hosts:
+        - host: "openfaas.home.${SECRET_DOMAIN}"
+      tls:
+        - secretName: tls-cert
+          hosts:
+            - "openfaas.home.${SECRET_DOMAIN}"
+    prometheus:
+      resources:
+        requests:
+          memory: "100Mi"
+
+    nats:
+      enableMonitoring: false
+      metrics:
+        # Should stay off by default because the exporter is not multi-arch (yet)
+        enabled: false
+
+    faasnetes:
+      readinessProbe:
+        initialDelaySeconds: 0
+        timeoutSeconds: 1
+        periodSeconds: 1
+      livenessProbe:
+        initialDelaySeconds: 0
+        timeoutSeconds: 1
+        periodSeconds: 1
+      imagePullPolicy: "IfNotPresent"
