@@ -5,5 +5,5 @@ resources:
   - namespace.yaml
   - tls-cert.yaml
   - nfs-subdir-external-provisioner
-  - minio
+  # - minio
   - minio-operator
