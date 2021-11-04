@@ -28,10 +28,10 @@ spec:
         - name: MINIO_OPERATOR_TLS_ENABLE
           value: "off"
       #   - name: CLUSTER_DOMAIN
-      #     value: "minio.home.techtales.io"
+      #     value: "kubernetes.default.svc.cluster.local"
       #   - name: WATCHED_NAMESPACE
       #     value: ""
-      replicaCount: 1
+      replicaCount: 3
 
     console:
       # image:
