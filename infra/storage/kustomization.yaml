@@ -6,4 +6,4 @@ resources:
   - tls-cert.yaml
   - nfs-subdir-external-provisioner
   - minio-operator
-  - openebs
+  # - openebs
