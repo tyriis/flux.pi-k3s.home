@@ -21,9 +21,10 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: traefik
+        # ingressClassName: traefik
+        # dont get an ip if ingressClasName is used
         annotations:
-          # kubernetes.io/ingress.class: traefik
+          kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.tls: "true"
           traefik.ingress.kubernetes.io/frontend-entry-points: http,https
           traefik.ingress.kubernetes.io/redirect-entry-point: https
