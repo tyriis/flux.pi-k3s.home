@@ -29,7 +29,7 @@ spec:
         envFrom:
         - configMapRef:
             name: pimoroni-fanshim
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             cpu: 100m
