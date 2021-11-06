@@ -38,3 +38,9 @@ spec:
           - secretName: tls-cert
             hosts:
               - "icinga.home.${SECRET_DOMAIN}"
+    mariadb:
+      enabled: true
+      primary:
+        persistence:
+          enabled: true
+          storageClass: "nas-nfs"
