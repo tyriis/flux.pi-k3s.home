@@ -7,8 +7,8 @@ metadata:
 data:
   OFF_THRESHOLD: "45" # "55"
   ON_THRESHOLD: "55" # "65"
-  LOW_TEMP: "30.0"
-  HIGH_TEMP: "85.0"
+  LOW_TEMP: "45.0"
+  HIGH_TEMP: "65.0"
   DELAY: "2"
   PREEMPT: "TRUE"
   VERBOSE: "FALSE"
