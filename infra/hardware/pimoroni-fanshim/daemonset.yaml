@@ -25,7 +25,7 @@ spec:
       - name: pimoroni-fanshim
         securityContext:
           privileged: true
-        image: tyriis/test:25
+        image: tyriis/test:26
         ports:
         - containerPort: 8000
         envFrom:
