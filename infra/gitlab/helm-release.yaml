@@ -15,7 +15,7 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    image: gitlab/gitlab-runner:alpine-v11.6.0
+    image: gitlab/gitlab-runner:alpine-v14.4.0
     imagePullPolicy: IfNotPresent
     replicas: 2
     gitlabUrl: https://gitlab.com/
@@ -67,8 +67,8 @@ spec:
     - name: TZ
       value: Europe/Vienna
 
-    podAnnotations:
-      app.kubernetes.io/name: gitlab-runner
+    # podAnnotations:
+    #   app.kubernetes.io/name: gitlab-runner
 
     podLabels:
-      owner.team: test
+      app.kubernetes.io/name: gitlab-runner
