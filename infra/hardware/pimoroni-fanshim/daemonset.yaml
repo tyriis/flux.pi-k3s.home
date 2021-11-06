@@ -41,9 +41,9 @@ spec:
         - name: export
           mountPath: /sys/class/gpio/export
           readOnly: false
-        - name: gpio18
-          mountPath: /sys/class/gpio/gpio18
-          readOnly: false
+        # - name: gpio18
+        #   mountPath: /sys/class/gpio/gpio18
+        #   readOnly: false
         - name: mem
           mountPath: /dev/mem
           readOnly: false
@@ -53,10 +53,10 @@ spec:
         hostPath:
           path: /sys/class/gpio/export
           type: ''
-      - name: gpio18
-        hostPath:
-          path: /sys/class/gpio/gpio18
-          type: ''
+      # - name: gpio18
+      #   hostPath:
+      #     path: /sys/class/gpio/gpio18
+      #     type: ''
       - name: mem
         hostPath:
           path: /dev/mem
