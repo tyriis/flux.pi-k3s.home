@@ -39,7 +39,8 @@ spec:
             hosts:
               - "icinga.home.${SECRET_DOMAIN}"
     mariadb:
-      enabled: true
+      # bitnami charts do not offer arm64 image support for now
+      enabled: false
       primary:
         persistence:
           enabled: true
