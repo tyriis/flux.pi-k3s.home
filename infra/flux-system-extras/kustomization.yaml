@@ -11,3 +11,4 @@ resources:
   - monitoring.yaml
   - system-upgrade.yaml
   - openfaas.yaml
+  - gitlab.yaml

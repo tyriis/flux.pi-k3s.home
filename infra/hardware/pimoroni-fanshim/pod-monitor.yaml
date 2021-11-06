@@ -19,6 +19,5 @@ spec:
           - pimoroni-fanshim
   podMetricsEndpoints:
     - port: http-prom
-      path: /
       interval: 15s
       scrapeTimeout: 5s
