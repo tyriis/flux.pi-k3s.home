@@ -5,6 +5,14 @@ metadata:
   name: pimoroni-fanshim
   namespace: hardware
 data:
-  ON_TEMP: "55"  # 60
-  OFF_TEMP: "45"  # 50
-  FAN_PIN: "18"
+OFF_THRESHOLD: "40"
+ON_THRESHOLD: "50"
+# LOW_TEMP: "30.0"
+# HIGH_TEMP: "85.0"
+DELAY: "2"
+# PREEMPT: "0"
+# VERBOSE: "0"
+# NOBUTTON: "0"
+# NOLED: "0"
+BRIGHTNESS: "255"
+EXTENDED_COLOURS: "TRUE"
