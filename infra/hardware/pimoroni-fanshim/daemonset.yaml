@@ -25,7 +25,7 @@ spec:
       - name: pimoroni-fanshim
         securityContext:
           privileged: true
-        image: tyriis/test:19
+        image: tyriis/test:20
         ports:
         - containerPort: 8000
         envFrom:
@@ -35,10 +35,10 @@ spec:
         resources:
           limits:
             cpu: 100m
-            memory: 25Mi
+            memory: 64Mi
           requests:
             cpu: 100m
-            memory: 15Mi
+            memory: 16Mi
         # volumeMounts:
         # - name: export
         #   mountPath: /sys/class/gpio/export
