@@ -25,7 +25,7 @@ spec:
       - name: pimoroni-fanshim
         securityContext:
           privileged: true
-        image: tyriis/test:13
+        image: tyriis/test:14
         envFrom:
         - configMapRef:
             name: pimoroni-fanshim
