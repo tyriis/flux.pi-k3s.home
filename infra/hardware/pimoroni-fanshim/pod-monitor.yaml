@@ -10,7 +10,7 @@ spec:
       - hardware
   selector:
     matchExpressions:
-      - key: name
+      - key: app
         operator: In
         values:
           - pimoroni-fanshim

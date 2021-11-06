@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         name: pimoroni-fanshim
+        app: pimoroni-fanshim
     spec:
       tolerations:
       # this toleration is to have the daemonset runnable on master nodes
