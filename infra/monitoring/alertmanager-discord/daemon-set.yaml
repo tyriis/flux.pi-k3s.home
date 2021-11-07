@@ -31,7 +31,8 @@ spec:
           name: webhook
           protocol: TCP
         env:
-        - DISCORD_WEBHOOK: "${SECRET_DISCORD_WEBHOOK}"
+        - name: DISCORD_WEBHOOK
+          value: "${SECRET_DISCORD_WEBHOOK}"
         imagePullPolicy: IfNotPresent
         resources:
           limits:
