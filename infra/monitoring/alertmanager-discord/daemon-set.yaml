@@ -28,7 +28,7 @@ spec:
         image: tyriis/alertmanager-discord-arm64:latest
         ports:
         - containerPort: 9094
-          name: alertmanager-listener
+          name: webhook
           protocol: TCP
         env:
         - DISCORD_WEBHOOK: "${SECRET_DISCORD_WEBHOOK}"
