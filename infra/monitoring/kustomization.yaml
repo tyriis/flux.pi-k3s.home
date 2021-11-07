@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - tls-cert.yaml
   - kube-prometheus-stack
+  - alertmanager-discord
   - loki
   - promtail
   - icinga2

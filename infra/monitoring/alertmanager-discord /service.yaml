@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertmanager-discord
+  namespace: monitoring
+spec:
+  type: ClusterIP
+  ports:
+  - name: alertmanager-listener
+    port: 9094
+    protocol: TCP
+    targetPort: alertmanager-listener
+  selector:
+    app.kubernetes.io/name: alertmanager-discord

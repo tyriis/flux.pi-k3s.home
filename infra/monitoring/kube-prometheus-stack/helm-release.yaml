@@ -52,15 +52,46 @@ spec:
                 requests:
                   storage: 10Gi
 
+      config:
+        global:
+          resolve_timeout: 5m
+        route:
+          # group_by: ['job']
+          # group_wait: 30s
+          # group_interval: 5m
+          # repeat_interval: 12h
+          # receiver: 'null'
+          # routes:
+          # - match:
+          #     alertname: Watchdog
+          #   receiver: 'null'
+          group_by: ['alertname']
+          group_wait: 20s
+          group_interval: 5m
+          repeat_interval: 3h
+          receiver: discord_webhook
+          routes:
+          - match:
+              alertname: Watchdog
+            receiver: 'null'
+
+        receivers:
+        - name: 'null'
+        - name: 'discord_webhook'
+          webhook_configs:
+          - url: 'http://alertmanager-discord.monitoring.svc.cluster.local:9094'
+        templates:
+        - '/etc/alertmanager/config/*.tmpl'
+
     nodeExporter:
       serviceMonitor:
         relabelings:
-          - action: replace
-            regex: (.*)
-            replacement: $1
-            sourceLabels:
-              - __meta_kubernetes_pod_node_name
-            targetLabel: kubernetes_node
+        - action: replace
+          regex: (.*)
+          replacement: $1
+          sourceLabels:
+          - __meta_kubernetes_pod_node_name
+          targetLabel: kubernetes_node
 
     grafana:
       enabled: true
@@ -90,22 +121,22 @@ spec:
         dashboardproviders.yaml:
           apiVersion: 1
           providers:
-            - name: default
-              orgId: 1
-              folder: ''
-              type: file
-              disableDeletion: true
-              allowUiUpdates: false
-              options:
-                path: /tmp/dashboards
-            - name: flux
-              orgId: 1
-              folder: Flux
-              type: file
-              disableDeletion: false
-              allowUiUpdates: true
-              options:
-                path: /var/lib/grafana/dashboards/flux
+          - name: default
+            orgId: 1
+            folder: ''
+            type: file
+            disableDeletion: true
+            allowUiUpdates: false
+            options:
+              path: /tmp/dashboards
+          - name: flux
+            orgId: 1
+            folder: Flux
+            type: file
+            disableDeletion: false
+            allowUiUpdates: true
+            options:
+              path: /var/lib/grafana/dashboards/flux
       dashboards:
         flux:
           flux-cluster:
@@ -129,21 +160,21 @@ spec:
           traefik.ingress.kubernetes.io/redirect-entry-point: https
           traefik.ingress.kubernetes.io/redirect-permanent: "true"
         hosts:
-          - "grafana.home.${SECRET_DOMAIN}"
+        - "grafana.home.${SECRET_DOMAIN}"
         path: /
         tls:
-          - secretName: tls-cert
-            hosts:
-              - "grafana.home.${SECRET_DOMAIN}"
+        - secretName: tls-cert
+          hosts:
+          - "grafana.home.${SECRET_DOMAIN}"
 
     kubelet:
       enabled: true
       serviceMonitor:
         metricRelabelings:
-          - action: replace
-            sourceLabels:
-              - node
-            targetLabel: instance
+        - action: replace
+          sourceLabels:
+          - node
+          targetLabel: instance
 
     kubeApiServer:
       enabled: true
