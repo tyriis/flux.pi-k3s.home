@@ -6,7 +6,6 @@ metadata:
   namespace: monitoring
   labels:
     app: alertmanager-discord
-    app.kubernetes.io/name: alertmanager-discord
 spec:
   selector:
     matchLabels:
@@ -16,6 +15,7 @@ spec:
       labels:
         name: alertmanager-discord
         app: alertmanager-discord
+        app.kubernetes.io/name: alertmanager-discord
     spec:
       tolerations:
       # this toleration is to have the daemonset runnable on master nodes
