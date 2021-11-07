@@ -5,8 +5,8 @@ metadata:
   name: pimoroni-fanshim
   namespace: hardware
 data:
-  OFF_THRESHOLD: "45" # "55"
-  ON_THRESHOLD: "55" # "65"
+  OFF_THRESHOLD: "40" # "55"
+  ON_THRESHOLD: "45" # "65"
   LOW_TEMP: "55"
   HIGH_TEMP: "65"
   DELAY: "2"
