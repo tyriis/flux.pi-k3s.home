@@ -68,6 +68,8 @@ spec:
       value: kubernetes
     - name: TZ
       value: Europe/Vienna
+    - name: FF_USE_LEGACY_KUBERNETES_EXECUTION_STRATEGY
+      value: "true"
 
     # podAnnotations:
     #   app.kubernetes.io/name: gitlab-runner
