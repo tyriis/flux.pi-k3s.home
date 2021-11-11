@@ -31,12 +31,13 @@ spec:
         traefik.ingress.kubernetes.io/redirect-entry-point: https
         traefik.ingress.kubernetes.io/redirect-permanent: "true"
       hosts:
-      - "loki.home.${SECRET_DOMAIN}"
-      path: /
+        - host: "loki.home.${SECRET_DOMAIN}"
+          paths:
+            - /
       tls:
-      - secretName: tls-cert
-        hosts:
-        - "loki.home.${SECRET_DOMAIN}"
+        - secretName: tls-cert
+          hosts:
+            - "loki.home.${SECRET_DOMAIN}"
 
     persistence:
       enabled: true
