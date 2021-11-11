@@ -24,6 +24,8 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: traefik
+        ingress.kubernetes.io/auth-type: basic
+        ingress.kubernetes.io/auth-secret: htpasswd
         traefik.ingress.kubernetes.io/router.tls: "true"
         traefik.ingress.kubernetes.io/frontend-entry-points: http,https
         traefik.ingress.kubernetes.io/redirect-entry-point: https
