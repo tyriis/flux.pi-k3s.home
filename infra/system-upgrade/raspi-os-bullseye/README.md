@@ -16,9 +16,11 @@ VERSION=$(cat /etc/debian_version)
 if [ ! $VERSION == "10.11" ]; then
   if [ $VERSION == "11.1" ]; then
     echo "update successfull version is $VERSION"
+    rm $LOCK_FILE
     exit 0
   fi
   echo "current version = $VERSION, no update possible."
+  rm $LOCK_FILE
   exit 0
 fi
 export DEBIAN_FRONTEND=noninteractive
@@ -36,5 +38,6 @@ if [ -f /var/run/reboot-required ]; then
   reboot
 else
   echo "no reboot required"
+  rm $LOCK_FILE
 fi
 ```
