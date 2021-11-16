@@ -14,8 +14,11 @@ echo "1" > $LOCK_FILE
 VERSION=$(cat /etc/debian_version)
 # only upgrade from 10.11
 if [ ! $VERSION == "10.11" ]; then
-  echo "current version = $VERSION, no update possible/required."
-  sleep 60
+  if [ $VERSION == "11.1" ]; then
+    echo "update successfull version is $VERSION"
+    exit 0
+  fi
+  echo "current version = $VERSION, no update possible."
   exit 0
 fi
 export DEBIAN_FRONTEND=noninteractive
