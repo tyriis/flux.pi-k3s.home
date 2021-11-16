@@ -14,11 +14,11 @@ spec:
   secrets:
     - name: raspi-os-bullseye
       # optional: default=/run/system-upgrade/secrets/{name}
-      path: /host/run/system-upgrade/secrets/raspbian
+      path: /host/run/system-upgrade/secrets/raspi-os-bullseye
   drain:
     force: true
   version: bullseye
   upgrade:
     image: debian:buster-slim
     command: ["chroot", "/host"]
-    args: ["sh", "/run/system-upgrade/secrets/raspbian/upgrade.sh"]
+    args: ["bash", "/run/system-upgrade/secrets/raspi-os-bullseye/upgrade.sh"]
