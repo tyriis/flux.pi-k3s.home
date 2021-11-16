@@ -20,13 +20,13 @@ if [ ! $VERSION == "10.11" ]; then
 fi
 export DEBIAN_FRONTEND=noninteractive
 apt --assume-yes update
-apt dist-upgrade -y
+apt --assume-yes dist-upgrade
 yes | rpi-update
 sed 's/buster/bullseye/g' /etc/apt/sources.list > /etc/apt/sources.list.bullseye
 mv /etc/apt/sources.list /etc/apt/sources.list.buster
 mv /etc/apt/sources.list.bullseye /etc/apt/sources.list
-apt --assume-yes update
-apt --assume-yes dist-upgrade
+apt --assume-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" update
+apt --assume-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
 apt --assume-yes autoclean
 if [ -f /var/run/reboot-required ]; then
   echo "reboot required"
