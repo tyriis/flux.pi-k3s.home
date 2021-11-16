@@ -12,4 +12,3 @@ resources:
   - grafana.yaml
   - openfaas.yaml
   - k8s-at-home.com.yaml
-  - charts.gitlab.io.yaml
