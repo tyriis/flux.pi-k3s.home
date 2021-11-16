@@ -1,4 +1,14 @@
-shell script:
+# raspi-os bullseye upgrade with rancher system-upgrade-controller
+
+## label nodes for upgrade manually
+```sh
+// example: kubectl label node <node-name> plan.upgrade.cattle.io/raspi-os=true
+kubectl label node pi-node01 plan.upgrade.cattle.io/raspi-os=true
+kubectl label node pi-node02 plan.upgrade.cattle.io/raspi-os=true
+kubectl label node pi-node03 plan.upgrade.cattle.io/raspi-os=true
+```
+
+## shell script from secret
 
 ```bash
 #!/bin/bash
