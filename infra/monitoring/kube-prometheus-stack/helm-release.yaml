@@ -25,9 +25,9 @@ spec:
         serviceMonitorSelector: {}
         serviceMonitorNamespaceSelector: {}
         serviceMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelector:
-          matchLabels:
-            app.kubernetes.io/part-of: flux
+        # podMonitorSelector:
+        #   matchLabels:
+        #     app.kubernetes.io/part-of: flux
         podMonitorNamespaceSelector: {}
         podMonitorSelectorNilUsesHelmValues: false
         retention: 30d
@@ -41,6 +41,30 @@ spec:
               resources:
                 requests:
                   storage: 15Gi
+
+        additionalScrapeConfigs:
+        - job_name: node-exporter
+          honor_timestamps: true
+          static_configs:
+          - targets:
+            - nas.home:9100
+            - red.home:9100
+            - strg.home:9100
+            - cubietruck.home:9100
+            - 192.168.1.1:9100
+
+        - job_name: ohm-exporter
+          scrape_interval: 15s
+          static_configs:
+          - targets:
+            - red.home:4445
+            - carbon.home:4445
+
+        - job_name: windows-exporter
+          scrape_interval: 15s
+          static_configs:
+          - targets:
+            - red.home:9182
 
     alertmanager:
       alertmanagerSpec:
