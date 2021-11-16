@@ -41,16 +41,6 @@ kubeseal --format=yaml --cert=pub-sealed-secrets.pem \
 < certificate.yaml > sealed-certificate.yaml
 ```
 
-### create gitlab runner certs
-```sh
-kubectl create secret generic gitlab-runner-certs -n gitlab  --from-file=gitlab.k8s.home.crt="k8s.home_host.pem" --from-file=registry.k8s.home.crt="k8s.home_host.pem"  --from-file=minio.k8s.home.crt="k8s.home_host.pem" --dry-run=client -o yaml > gitlab-runner-certs.yaml
-```
-and seal
-```sh
-kubectl create secret generic gitlab-runner-certs -n gitlab  --from-file=gitlab.k8s.home.crt="k8s.home_host.pem" --from-file=registry.k8s.home.crt="k8s.home_host.pem"  --from-file=minio.k8s.home.crt="k8s.home_host.pem" --dry-run=client -o yaml > gitlab-runner-certs.yaml
-```
-
-
 ### SECOPS
 #### Vault auto unseal
 https://learn.hashicorp.com/tutorials/vault/autounseal-transit?in=vault/auto-unseal

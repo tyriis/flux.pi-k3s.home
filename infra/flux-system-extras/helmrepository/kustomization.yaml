@@ -6,8 +6,6 @@ resources:
   - ricoberger.yaml
   - nfs-subdir-external-provisioner.yaml
   # - minio.yaml
-  - minio-operator.yaml
-  # - openebs.github.io.yaml
   - prometheus-community.yaml
   - grafana.yaml
   - openfaas.yaml
