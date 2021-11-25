@@ -7,5 +7,5 @@ resources:
   - kube-prometheus-stack
   - loki
   - promtail
-  # - icinga2
+  - icinga2
   - alertmanager-discord
