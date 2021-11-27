@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
-  namespace: monitoring
+  namespace: observability
 spec:
   interval: 5m
   chart:
@@ -101,7 +101,7 @@ spec:
         - name: 'null'
         - name: 'discord_webhook'
           webhook_configs:
-          - url: 'http://alertmanager-discord.monitoring.svc.cluster.local:9094'
+          - url: 'http://alertmanager-discord.observability.svc.cluster.local:9094'
         templates:
         - '/etc/alertmanager/config/*.tmpl'
 
@@ -162,10 +162,10 @@ spec:
       dashboards:
         flux:
           flux-cluster:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
+            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/observability/grafana/dashboards/cluster.json
             datasource: Prometheus
           flux-control-plane:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
+            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/observability/grafana/dashboards/control-plane.json
             datasource: Prometheus
           # Ref: https://grafana.com/grafana/dashboards/11074
           "1 Node Exporter for Prometheus Dashboard EN v20201010":

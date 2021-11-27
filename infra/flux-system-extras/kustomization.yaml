@@ -6,8 +6,8 @@ resources:
   - cluster-secrets.yaml
   - helmrepository
   - secops.yaml
-  - hardware.yaml
   - storage.yaml
   - monitoring.yaml
+  - hardware.yaml
   - system-upgrade.yaml
   - openfaas.yaml
