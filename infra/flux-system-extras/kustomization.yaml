@@ -8,7 +8,6 @@ resources:
   - secops.yaml
   - storage.yaml
   - observability.yaml
-  - monitoring.yaml
   - hardware.yaml
   - system-upgrade.yaml
   - openfaas.yaml

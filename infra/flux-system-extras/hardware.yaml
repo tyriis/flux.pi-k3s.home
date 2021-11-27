@@ -9,6 +9,7 @@ spec:
   dependsOn:
     - name: flux-system
     - name: flux-system-extras
+    - name: observability
   path: ./infra/hardware
   prune: true
   sourceRef:

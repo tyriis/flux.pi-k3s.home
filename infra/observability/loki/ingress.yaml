@@ -13,7 +13,7 @@ metadata:
     app.kubernetes.io/instance: loki
     app.kubernetes.io/name: loki
   name: loki
-  namespace: monitoring
+  namespace: observability
 spec:
   rules:
   - host: "loki.home.${SECRET_DOMAIN}"
