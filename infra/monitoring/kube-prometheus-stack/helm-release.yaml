@@ -14,7 +14,7 @@ spec:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
-      interval: 5m
+      interval: 1d
   timeout: 10m
   values:
     prometheus:
@@ -38,7 +38,7 @@ spec:
               storageClassName: local-path
               resources:
                 requests:
-                  storage: 15Gi
+                  storage: 25Gi
 
         additionalScrapeConfigs:
         - job_name: node-exporter
