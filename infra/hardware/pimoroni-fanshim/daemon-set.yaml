@@ -16,6 +16,18 @@ spec:
         name: pimoroni-fanshim
         app: pimoroni-fanshim
     spec:
+      # affinity is to prevent dameonset to run on nodes without hardware fanshim
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - pi-node01
+                - pi-node02
+                - pi-node03
       tolerations:
       # this toleration is to have the daemonset runnable on master nodes
       # remove it if your masters can't run pods
