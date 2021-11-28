@@ -15,8 +15,8 @@ spec:
       - key: app
         operator: In
         values:
-          - controller
-          # - helm-controller
+          # - controller
+          - helm-controller
           # - source-controller
           # - kustomize-controller
           # - notification-controller
