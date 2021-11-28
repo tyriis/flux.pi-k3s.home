@@ -6,3 +6,4 @@ resources:
   - pimoroni-fanshim/config-map.yaml
   - pimoroni-fanshim/daemon-set.yaml
   - pimoroni-fanshim/pod-monitor.yaml
+  - zigbee2mqtt
