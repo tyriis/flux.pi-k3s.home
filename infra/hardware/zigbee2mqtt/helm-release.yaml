@@ -22,6 +22,8 @@ spec:
         enabled: true
         accessMode: ReadWriteOnce
         storageClassName: local-path
+        size: 100Mi
+        retain: true
 
     usb:
       enabled: true
