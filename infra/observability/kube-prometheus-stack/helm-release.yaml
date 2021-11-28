@@ -162,10 +162,10 @@ spec:
       dashboards:
         flux:
           flux-cluster:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/observability/grafana/dashboards/cluster.json
+            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
             datasource: Prometheus
           flux-control-plane:
-            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/observability/grafana/dashboards/control-plane.json
+            url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
             datasource: Prometheus
           # Ref: https://grafana.com/grafana/dashboards/11074
           "1 Node Exporter for Prometheus Dashboard EN v20201010":
