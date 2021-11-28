@@ -14,7 +14,7 @@ spec:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
-      interval: 1d
+      interval: 15m
   timeout: 10m
   values:
     prometheus:
