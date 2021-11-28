@@ -7,7 +7,7 @@
 export VAULT_ADDR=http://localhost:8200
 export VAULT_SECRETS_OPERATOR_NAMESPACE=secops
 export VAULT_SECRET_NAME=$(kubectl get sa -n $VAULT_SECRETS_OPERATOR_NAMESPACE vault-secrets-operator -o jsonpath="{.secrets[*]['name']}")
-export SA_JWT_TOKEN=$(kubectl get secret -n $VAULT_SECRETS_OPERATOR_NAMESPACE secops $VAULT_SECRET_NAME -o jsonpath="{.data.token}" | base64 --decode; echo)
+export SA_JWT_TOKEN=$(kubectl get secret -n $VAULT_SECRETS_OPERATOR_NAMESPACE $VAULT_SECRET_NAME -o jsonpath="{.data.token}" | base64 --decode; echo)
 export SA_CA_CRT=$(kubectl get secret -n $VAULT_SECRETS_OPERATOR_NAMESPACE $VAULT_SECRET_NAME -o jsonpath="{.data['ca\.crt']}" | base64 --decode; echo)
 export K8S_HOST=$(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')
 env | grep -E 'VAULT_SECRETS_OPERATOR_NAMESPACE|VAULT_SECRET_NAME|SA_JWT_TOKEN|SA_CA_CRT|K8S_HOST'
