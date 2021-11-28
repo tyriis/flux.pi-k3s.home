@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: zigbee2mqtt
-      version: 9.1.0
+      version: 8.3.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -25,10 +25,10 @@ spec:
         size: 100Mi
         retain: true
 
-    usb:
-      enabled: true
-      type: hostPath
-      hostPath: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_21_4F_24_18-if00-port0
+    # usb:
+    #   enabled: true
+    #   type: hostPath
+    #   hostPath: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_21_4F_24_18-if00-port0
 
     affinity:
       nodeAffinity:
