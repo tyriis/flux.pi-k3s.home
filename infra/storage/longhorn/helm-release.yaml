@@ -20,3 +20,12 @@ spec:
     # https://artifacthub.io/packages/helm/longhorn/longhorn?modal=values
     persistence:
       reclaimPolicy: Retain
+    longhornManager:
+      nodeSelector:
+        kubernetes.io/arch: arm64
+    longhornDriver:
+      nodeSelector:
+        kubernetes.io/arch: arm64
+    longhornUI:
+      nodeSelector:
+        kubernetes.io/arch: arm64
