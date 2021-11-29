@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/instance: zigbee2mqtt
     app.kubernetes.io/name: zigbee2mqtt
 spec:
-  replicas: 1s
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/instance: zigbee2mqtt
@@ -102,4 +102,4 @@ spec:
       # - name: usb
       #   hostPath:
       #     path: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_21_4F_24_18-if00-port0
-      #     type: ''
+      #    type: ''
