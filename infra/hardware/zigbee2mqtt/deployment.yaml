@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/instance: zigbee2mqtt
     app.kubernetes.io/name: zigbee2mqtt
 spec:
-  replicas: 1
+  replicas: 1s
   selector:
     matchLabels:
       app.kubernetes.io/instance: zigbee2mqtt
@@ -84,9 +84,9 @@ spec:
         #   name: zigbee2mqtt-settings
         #  subPath: configuration.yaml
 
-        - mountPath: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_21_4F_24_18-if00-port0
-          name: usb
-          readOnly: false
+        # - mountPath: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_21_4F_24_18-if00-port0
+        #   name: usb
+        #   readOnly: false
 
       restartPolicy: Always
 
@@ -95,11 +95,11 @@ spec:
         hostPath:
           path: /data
 
-      - configMap:
-          defaultMode: 420
-          name: zigbee2mqtt-settings
-        name: zigbee2mqtt-settings
-      - name: usb
-        hostPath:
-          path: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_21_4F_24_18-if00-port0
-          type: ''
+      # - configMap:
+      #     defaultMode: 420
+      #     name: zigbee2mqtt-settings
+      #   name: zigbee2mqtt-settings
+      # - name: usb
+      #   hostPath:
+      #     path: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_21_4F_24_18-if00-port0
+      #     type: ''
