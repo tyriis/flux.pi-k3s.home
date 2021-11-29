@@ -80,9 +80,9 @@ spec:
         - mountPath: /data
           name: data
 
-        - mountPath: /app/configuration.yaml
-          name: zigbee2mqtt-settings
-          subPath: configuration.yaml
+        # - mountPath: /app/configuration.yaml
+        #   name: zigbee2mqtt-settings
+        #  subPath: configuration.yaml
 
         - mountPath: /dev/serial/by-id/usb-Silicon_Labs_slae.sh_cc2652rb_stick_-_slaesh_s_iot_stuff_00_12_4B_00_21_4F_24_18-if00-port0
           name: usb
@@ -92,8 +92,9 @@ spec:
 
       volumes:
       - name: data
-        persistentVolumeClaim:
-          claimName: zigbee2mqtt-data
+        hostPath:
+          path: /data
+
       - configMap:
           defaultMode: 420
           name: zigbee2mqtt-settings
