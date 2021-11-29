@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   # - helm-release.yaml
   # - config-map.yaml
-  - deployment.yaml
+  - daemon-set.yaml
