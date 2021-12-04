@@ -19,6 +19,14 @@ spec:
   values:
     prometheus:
       prometheusSpec:
+        resources:
+          requests:
+            memory: 3072Mi
+            cpu: 1000m
+          limit:
+            memory: 3072Mi
+            cpu: 3000m
+
         ruleSelector: {}
         ruleNamespaceSelector: {}
         ruleSelectorNilUsesHelmValues: false
@@ -190,7 +198,7 @@ spec:
           - "grafana.home.${SECRET_DOMAIN}"
 
     kubelet:
-      enabled: false
+      enabled: true
       serviceMonitor:
         metricRelabelings:
         - action: replace
