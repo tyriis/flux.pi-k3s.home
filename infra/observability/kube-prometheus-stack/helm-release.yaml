@@ -190,7 +190,7 @@ spec:
           - "grafana.home.${SECRET_DOMAIN}"
 
     kubelet:
-      enabled: true
+      enabled: false
       serviceMonitor:
         metricRelabelings:
         - action: replace
@@ -199,7 +199,7 @@ spec:
           targetLabel: instance
 
     kubeApiServer:
-      enabled: true
+      enabled: false
 
     kubeControllerManager:
       enabled: false
