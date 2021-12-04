@@ -23,7 +23,7 @@ spec:
           requests:
             memory: 3072Mi
             cpu: 1000m
-          limit:
+          limits:
             memory: 3072Mi
             cpu: 3000m
 
