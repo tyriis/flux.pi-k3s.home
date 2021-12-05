@@ -208,6 +208,13 @@ spec:
 
     kubeApiServer:
       enabled: false
+      serviceMonitor:
+        metricRelabelings:
+        - action: keep
+          regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+          sourceLabels:
+          - __name__
+
 
     kubeControllerManager:
       enabled: false

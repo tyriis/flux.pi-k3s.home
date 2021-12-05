@@ -20,24 +20,24 @@ spec:
     # https://grafana.com/docs/loki/latest/configuration/
     image:
       repository: ghcr.io/k8s-at-home/loki
-    # ingress:
-    #   enabled: false
-    #   annotations:
-    #     kubernetes.io/ingress.class: traefik
-    #     ingress.kubernetes.io/auth-type: basic
-    #     ingress.kubernetes.io/auth-secret: htpasswd
-    #     traefik.ingress.kubernetes.io/router.tls: "true"
-    #     traefik.ingress.kubernetes.io/frontend-entry-points: http,https
-    #     traefik.ingress.kubernetes.io/redirect-entry-point: https
-    #     traefik.ingress.kubernetes.io/redirect-permanent: "true"
-    #   hosts:
-    #     - host: "loki.home.${SECRET_DOMAIN}"
-    #       paths:
-    #         - /
-    #   tls:
-    #     - secretName: tls-cert
-    #       hosts:
-    #         - "loki.home.${SECRET_DOMAIN}"
+    ingress:
+      enabled: false
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        ingress.kubernetes.io/auth-type: basic
+        ingress.kubernetes.io/auth-secret: htpasswd
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/frontend-entry-points: http,https
+        traefik.ingress.kubernetes.io/redirect-entry-point: https
+        traefik.ingress.kubernetes.io/redirect-permanent: "true"
+      hosts:
+        - host: "loki.home.${SECRET_DOMAIN}"
+          paths:
+            - /
+      tls:
+        - secretName: tls-cert
+          hosts:
+            - "loki.home.${SECRET_DOMAIN}"
 
     persistence:
       enabled: true
