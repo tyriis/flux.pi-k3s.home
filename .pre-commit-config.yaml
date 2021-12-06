@@ -5,7 +5,7 @@ repos:
   rev: v1.26.3
   hooks:
   - args:
-    - -c
+    - --config-file
     - .yamllint.config.yaml
     id: yamllint
 - repo: https://github.com/pre-commit/pre-commit-hooks
