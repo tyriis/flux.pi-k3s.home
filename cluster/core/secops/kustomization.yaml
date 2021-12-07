@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - vault
   - vault-secrets-operator
-  - test.yaml
+  # - test.yaml
