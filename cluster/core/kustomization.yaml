@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - namespaces/hardware.yaml
 - namespaces/observability.yaml
+- namespaces/openfaas.yaml
 - namespaces/secops.yaml
 - namespaces/storage.yaml
 - tls-certs/observability.yaml
