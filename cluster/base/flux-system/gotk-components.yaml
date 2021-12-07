@@ -1,4 +1,5 @@
 # https://github.com/fluxcd/flux2/releases/download/v0.24.0/install.yaml
+---
 apiVersion: v1
 kind: Namespace
 metadata:
