@@ -13,7 +13,7 @@ spec:
       version: 0.17.1
       sourceRef:
         kind: HelmRepository
-        name: hashicorp
+        name: hashicorp-charts
         namespace: flux-system
       interval: 5m
   values:
