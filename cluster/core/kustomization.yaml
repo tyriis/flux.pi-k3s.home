@@ -2,4 +2,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- namespaces
+- namespaces/hardware.yaml
+- namespaces/observability.yaml
+- namespaces/secops.yaml
+- namespaces/storage.yaml
+- tls-certs/observability.yaml
+- tls-certs/openfaas.yaml
+- tls-certs/secops.yaml
+- tls-certs/storage.yaml
+- hardware
+- system-upgrade
+- storage
+- secops
