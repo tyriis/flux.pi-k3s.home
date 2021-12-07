@@ -11,6 +11,7 @@ resources:
 - tls-certs/openfaas.yaml
 - tls-certs/secops.yaml
 - tls-certs/storage.yaml
+- observability
 - hardware
 - system-upgrade
 - storage
