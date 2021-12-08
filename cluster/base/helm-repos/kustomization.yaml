@@ -10,4 +10,5 @@ resources:
 - nfs-subdir-external-provisioner.yaml
 - openfaas.github.io.yaml
 - prometheus-community.github.io.yaml
+- repos.emqx.io.yaml
 - ricoberger.github.io.yaml
