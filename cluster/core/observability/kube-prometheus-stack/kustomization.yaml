@@ -5,4 +5,4 @@ resources:
   - crds
   - helm-release.yaml
   - prometheus-rules/node-exporter.yaml
-  - podmonitor-flux-system.yaml
+  - pod-monitors
