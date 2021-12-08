@@ -125,6 +125,7 @@ spec:
 
     grafana:
       enabled: false
+      forceDeployDashboards: true
 
     kubelet:
       enabled: true
