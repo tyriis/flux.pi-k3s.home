@@ -137,7 +137,7 @@ spec:
           targetLabel: instance
 
     kubeApiServer:
-      enabled: false
+      enabled: true
       serviceMonitor:
         metricRelabelings:
         - action: keep
