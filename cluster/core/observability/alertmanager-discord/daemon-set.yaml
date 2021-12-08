@@ -47,7 +47,7 @@ spec:
         - name: DISCORD_USERNAME
           value: ${SETTING_CLUSTERNAME}
         - name: DISCORD_AVATAR_URL
-          value: https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/115px-Prometheus_software_logo.svg.png
+          value: https://cncf-branding.netlify.app/img/projects/prometheus/icon/color/prometheus-icon-color.svg
         imagePullPolicy: IfNotPresent
         resources:
           limits:
