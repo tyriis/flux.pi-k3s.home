@@ -6,3 +6,4 @@ resources:
   - alertmanager-discord
   - loki
   - promtail
+  - grafana

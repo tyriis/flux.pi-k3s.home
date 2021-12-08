@@ -124,7 +124,7 @@ spec:
           targetLabel: kubernetes_node
 
     grafana:
-      enabled: true
+      enabled: false
       forceDeployDashboards: true
       adminPassword: "${SECRET_GRAFANA_PASSWORD}"
       # serviceMonitor:
