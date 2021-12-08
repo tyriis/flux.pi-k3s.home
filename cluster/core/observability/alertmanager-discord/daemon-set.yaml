@@ -36,7 +36,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: alertmanager-discord
-        image: tyriis/alertmanager-discord-arm64:latest
+        image: rogerrum/alertmanager-discord:1.0.3
         ports:
         - containerPort: 9094
           name: webhook
@@ -44,6 +44,10 @@ spec:
         env:
         - name: DISCORD_WEBHOOK
           value: "${SECRET_DISCORD_WEBHOOK}"
+        - name: DISCORD_USERNAME
+          value: ${SETTING_CLUSTERNAME}
+        - name: DISCORD_AVATAR_URL
+          value: //upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/115px-Prometheus_software_logo.svg.png
         imagePullPolicy: IfNotPresent
         resources:
           limits:
