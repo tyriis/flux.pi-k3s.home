@@ -63,6 +63,7 @@ spec:
 
             seal "transit" {
               address = "${SECRET_VAULT_URL}"
+              token = "${SECRET_VAULT_TOKEN}"
               disable_renewal = "false"
               key_name = "autounseal"
               mount_path = "transit/"
