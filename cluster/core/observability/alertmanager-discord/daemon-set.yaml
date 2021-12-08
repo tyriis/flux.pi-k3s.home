@@ -47,7 +47,7 @@ spec:
         - name: DISCORD_USERNAME
           value: ${SETTING_CLUSTERNAME}
         - name: DISCORD_AVATAR_URL
-          value: https://cdn.discordapp.com/avatars/713481031768080388/42664c45ca584e00b0fb8468301b2a62.png?size=80
+          value: https://cdn.discordapp.com/avatars/713481031768080388/42664c45ca584e00b0fb8468301b2a62.png
         imagePullPolicy: IfNotPresent
         resources:
           limits:
