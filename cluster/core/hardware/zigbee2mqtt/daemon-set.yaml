@@ -61,7 +61,7 @@ spec:
 
         env:
         - name: TZ
-          value: Europe/Vienna
+          value: ${SETTING_TZ}
         - name: ZIGBEE2MQTT_DATA
           value: /data
 

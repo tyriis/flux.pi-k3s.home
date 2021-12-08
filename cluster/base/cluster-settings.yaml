@@ -5,4 +5,5 @@ metadata:
   namespace: flux-system
   name: cluster-settings
 data:
-  TZ: Europe/Vienna
+  SETTING_CLUSTERNAME: pi-k3s
+  SETTING_TZ: Europe/Vienna

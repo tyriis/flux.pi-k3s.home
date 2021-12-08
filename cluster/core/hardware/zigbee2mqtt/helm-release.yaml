@@ -54,7 +54,7 @@ spec:
 
     env:
       ZIGBEE2MQTT_DATA: /data
-      TZ: Europe/Vienna
+      TZ: ${SETTING_TZ}
 
     config:
       homeassistant: true
