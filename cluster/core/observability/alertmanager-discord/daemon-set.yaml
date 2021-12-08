@@ -47,7 +47,7 @@ spec:
         - name: DISCORD_USERNAME
           value: ${SETTING_CLUSTERNAME}
         - name: DISCORD_AVATAR_URL
-          value: https://cncf-branding.netlify.app/img/projects/prometheus/icon/color/prometheus-icon-color.svg
+          value: https://cdn.discordapp.com/avatars/713481031768080388/42664c45ca584e00b0fb8468301b2a62.png?size=80
         imagePullPolicy: IfNotPresent
         resources:
           limits:
