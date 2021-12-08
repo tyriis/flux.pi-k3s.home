@@ -141,10 +141,11 @@ spec:
       serviceMonitor:
         metricRelabelings:
         - action: keep
-          regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+          regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset|replicaset).+'
           sourceLabels:
           - __name__
-
+        - action: drop
+          regex: '.+apiextensions\.k8s\.io.+'
 
     kubeControllerManager:
       enabled: false
