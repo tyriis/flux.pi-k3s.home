@@ -57,3 +57,7 @@ vault write auth/kubernetes/config \
     disable_iss_validation=false
 
 TODO: create terraform pipeline for vault-secrets-operator
+
+
+<!-- BEGIN_TF_DOCS -->
+<!-- END_TF_DOCS -->
