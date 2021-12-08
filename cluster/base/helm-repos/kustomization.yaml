@@ -8,5 +8,6 @@ resources:
 - itzg.github.io.yaml
 - k8s-at-home.com.yaml
 - nfs-subdir-external-provisioner.yaml
+- openfaas.github.io.yaml
 - prometheus-community.github.io.yaml
 - ricoberger.github.io.yaml
