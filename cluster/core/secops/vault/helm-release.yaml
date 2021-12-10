@@ -48,7 +48,8 @@ spec:
           memory: 256Mi
           cpu: 250m
         limits:
-          memory: 256Mi
+        #   memory: 256Mi
+          cpu: 1000m
       standalone:
         enabled: false
       ha:
