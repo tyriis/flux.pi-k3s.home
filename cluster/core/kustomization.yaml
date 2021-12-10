@@ -9,6 +9,7 @@ resources:
 # - namespaces/openfaas.yaml
 - namespaces/secops.yaml
 - namespaces/storage.yaml
+- namespace/gitlab.yaml
 - tls-certs/observability.yaml
 - tls-certs/openfaas.yaml
 - tls-certs/secops.yaml
