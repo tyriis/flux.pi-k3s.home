@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   # - openfaas
   - home
-  - gitlab-runner
+  # - gitlab-runner
