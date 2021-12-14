@@ -61,14 +61,37 @@ spec:
         - job_name: esphome
           static_configs:
           - targets:
-            - esphome-switch-irpanel-1
-            - esphome-switch-irpanel-2
-            - esphome-switch-bedroom
-            - esphome-switch-domiroom
-            - esphome-switch-alexroom
-            - esphome-switch-basement
-            - esphome-switch-office
-            - esphome-switch-livingroom
+            - 192.168.1.132
+            labels:
+              device: switch-irpanel-1
+          - targets:
+            - 192.168.1.133
+            labels:
+              device: switch-irpanel-2
+          - targets:
+            - 192.168.1.135
+            labels:
+              device: switch-bedroom
+          - targets:
+            - 192.168.1.136
+            labels:
+              device: switch-domiroom
+          - targets:
+            - 192.168.1.137
+            labels:
+              device: switch-basement
+          - targets:
+            - 192.168.1.138
+            labels:
+              device: switch-alexroom
+          - targets:
+            - 192.168.1.139
+            labels:
+              device: switch-office
+          - targets:
+            - 192.168.1.153
+            labels:
+              device: switch-livingroom
 
         # - job_name: ohm-exporter
         #   scrape_interval: 15s
