@@ -19,4 +19,4 @@ resources:
 - hardware
 - system-upgrade
 - storage
-- secops
+# - secops
