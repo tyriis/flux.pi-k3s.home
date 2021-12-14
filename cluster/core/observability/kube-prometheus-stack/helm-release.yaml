@@ -153,6 +153,7 @@ spec:
 
     nodeExporter:
       serviceMonitor:
+       # lens ide config
         relabelings:
         - action: replace
           regex: (.*)
@@ -168,11 +169,20 @@ spec:
     kubelet:
       enabled: true
       serviceMonitor:
+        # lens ide config
+        relabelings:
+        - action: replace
+          regex: (.*)
+          replacement: $1
+          sourceLabels:
+          - __meta_kubernetes_pod_node_name
+          targetLabel: kubernetes_node
         metricRelabelings:
         - action: replace
           sourceLabels:
           - node
           targetLabel: instance
+
 
     kubeApiServer:
       enabled: false
