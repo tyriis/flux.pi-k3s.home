@@ -21,8 +21,8 @@ spec:
       prometheusSpec:
         resources:
           requests:
-            memory: 3072Mi
-            cpu: 1000m
+            memory: 512Mi
+            cpu: 500m
           limits:
             memory: 3072Mi
             cpu: 3000m
