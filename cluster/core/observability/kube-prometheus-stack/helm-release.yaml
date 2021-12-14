@@ -89,7 +89,7 @@ spec:
             labels:
               device: switch-alexroom
           - targets:
-            - esphome- switch-office.home
+            - esphome-switch-office.home
             labels:
               device: switch-office
           - targets:
