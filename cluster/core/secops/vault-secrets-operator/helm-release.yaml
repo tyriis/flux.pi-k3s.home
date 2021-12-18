@@ -16,7 +16,6 @@ spec:
         kind: HelmRepository
         name: ricoberger-charts
         namespace: flux-system
-      interval: 5m
   install:
     crds: Create
   upgrade:
