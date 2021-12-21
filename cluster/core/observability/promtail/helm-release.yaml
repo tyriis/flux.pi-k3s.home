@@ -18,10 +18,9 @@ spec:
         kind: HelmRepository
         name: grafana-charts
         namespace: flux-system
-      interval: 5m
   values:
     extraArgs:
-    - -client.external-labels=hostname=$(HOSTNAME)
+    - -client.external-labels=hostname=$(HOSTNAME),cluster=${SETTING_CLUSTERNAME}
     - -config.expand-env
 
     config:
@@ -34,7 +33,7 @@ spec:
               max_age: 12h
               labels:
                 job: systemd-journal
-                cluster: ${SETTING_CLUSTERNAME}
+                # cluster: ${SETTING_CLUSTERNAME}
             relabel_configs:
               - source_labels: ['__journal__systemd_unit']
                 target_label: 'unit'
@@ -49,7 +48,7 @@ spec:
                   job: dmesg
                   __path__: /var/log/kern.log
                   # hostname: ${HOSTNAME}
-                  cluster: ${SETTING_CLUSTERNAME}
+                  # cluster: ${SETTING_CLUSTERNAME}
     extraVolumes:
     - name: journal
       hostPath:
