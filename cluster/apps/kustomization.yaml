@@ -5,6 +5,8 @@ resources:
   - hardware/pimoroni-fanshim
   - hardware/zigbee2mqtt
   - observability/grafana
-  # - home/emqx
   - system-upgrade
+  - secops/vault
+  - secops/vault-secret-operator
+  # - home/emqx
   # - gitlab-runner
