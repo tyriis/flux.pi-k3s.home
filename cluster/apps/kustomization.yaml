@@ -6,4 +6,5 @@ resources:
   - hardware/zigbee2mqtt
   - observability/grafana
   - home/emqx
+  - system-upgrade
   # - gitlab-runner
