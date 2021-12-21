@@ -16,7 +16,6 @@ resources:
 - tls-certs/storage.yaml
 - notifications
 - observability
-- hardware
 - system-upgrade
 - storage
 - secops
