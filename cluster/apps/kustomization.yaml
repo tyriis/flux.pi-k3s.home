@@ -7,6 +7,6 @@ resources:
   - observability/grafana
   - system-upgrade
   - secops/vault
-  - secops/vault-secret-operator
+  - secops/vault-secrets-operator
   # - home/emqx
   # - gitlab-runner
