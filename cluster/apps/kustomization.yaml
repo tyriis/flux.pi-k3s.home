@@ -8,7 +8,7 @@ resources:
   - observability/alertmanager-discord
   - observability/loki
   - observability/promtail
-  - observability/grafana
+  # - observability/grafana
   - system-upgrade
   - secops/vault
   - secops/vault-secrets-operator
