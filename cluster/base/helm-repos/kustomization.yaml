@@ -5,6 +5,7 @@ resources:
 - charts.gitlab.io.yaml
 - charts.longhorn.io.yaml
 - grafana.github.io.yaml
+- helm.traefik.io.yaml
 - helm.releases.hashicorp.com.yaml
 - itzg.github.io.yaml
 - k8s-at-home.com.yaml
