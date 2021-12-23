@@ -152,15 +152,21 @@ spec:
         - '/etc/alertmanager/config/*.tmpl'
 
     nodeExporter:
-      serviceMonitor:
-       # lens ide config
-        relabelings:
-        - action: replace
-          regex: (.*)
-          replacement: $1
-          sourceLabels:
-          - __meta_kubernetes_pod_node_name
-          targetLabel: kubernetes_node
+      enabled: true
+
+    prometheus-node-exporter:
+      fullnameOverride: node-exporter
+      prometheus:
+        monitor:
+          enabled: true
+          # lens ide config
+          relabelings:
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels:
+            - __meta_kubernetes_pod_node_name
+            targetLabel: kubernetes_node
 
     grafana:
       enabled: false
@@ -178,31 +184,34 @@ spec:
 
 
     kubeApiServer:
-      enabled: false
+      # enabled: true
       serviceMonitor:
         interval: 60s
-        metricRelabelings:
-        - action: keep
-          regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset|replicaset).+'
-          sourceLabels:
-          - __name__
-        - action: drop
-          regex: '.+apiextensions\.k8s\.io.+'
-          sourceLabels:
-          - group
+      #   metricRelabelings:
+      #   - action: keep
+      #     regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset|replicaset).+'
+      #     sourceLabels:
+      #     - __name__
+      #   - action: drop
+      #     regex: '.+apiextensions\.k8s\.io.+'
+      #     sourceLabels:
+      #     - group
 
 
     kubeControllerManager:
-      enabled: false
+      enabled: true
 
     kubeScheduler:
-      enabled: false
+      enabled: true
 
     kubeProxy:
-      enabled: false
+      enabled: true
 
     kubeEtcd:
       enabled: false
+
+    coreDns:
+      enabled: true
 
   # valuesFrom:
   #   - kind: Secret
