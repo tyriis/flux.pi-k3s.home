@@ -54,7 +54,7 @@ spec:
         - name: PROMETHEUS_PORT
           value: "9000"
         - name: MQTT_TOPIC
-          value: zigbee2mqtt-bridge03
+          value: zigbee2mqtt-bridge03/#
         - name: LOG_LEVEL
           value: DEBUG
         ports:
