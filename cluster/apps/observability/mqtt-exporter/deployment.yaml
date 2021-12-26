@@ -57,6 +57,8 @@ spec:
           value: zigbee2mqtt-bridge03/#
         - name: LOG_LEVEL
           value: INFO
+        - name: IGNORED_TOPICS
+          value: zigbee2mqtt-bridge03/bridge/info,zigbee2mqtt-bridge03/bridge/devices,zigbee2mqtt-bridge03/bridge/groups,zigbee2mqtt-bridge03/bridge/config,zigbee2mqtt-bridge03/bridge/extensions,zigbee2mqtt-bridge03/bridge/logging,zigbee2mqtt-bridge03/bridge/event,zigbee2mqtt-bridge03/bridge/log
         ports:
         - containerPort: 9000
           name: metrics
