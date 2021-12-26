@@ -55,6 +55,8 @@ spec:
           value: "9000"
         - name: MQTT_TOPIC
           value: zigbee2mqtt-bridge03
+        - name: LOG_LEVEL
+          value: DEBUG
         ports:
         - containerPort: 9000
           name: metrics
