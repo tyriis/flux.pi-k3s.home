@@ -9,6 +9,7 @@ resources:
   - observability/loki
   - observability/promtail
   - observability/grafana
+  - observability/mqtt-exporter
   - system-upgrade
   - secops/vault
   - secops/vault-secrets-operator
