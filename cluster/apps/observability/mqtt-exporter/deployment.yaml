@@ -53,6 +53,8 @@ spec:
           value: sensor
         - name: PROMETHEUS_PORT
           value: "9000"
+        - name: MQTT_TOPIC
+          value: zigbee2mqtt-bridge03
         ports:
         - containerPort: 9000
           name: metrics
