@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mqtt-explorer
+  namespace: observability
   labels:
     app.kubernetes.io/instance: mqtt-explorer
     app.kubernetes.io/name: mqtt-explorer
