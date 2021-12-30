@@ -168,6 +168,13 @@ spec:
             - __meta_kubernetes_pod_node_name
             targetLabel: kubernetes_node
 
+    kube-state-metrics:
+      selfMonitor:
+        enabled: true
+      prometheus:
+        monitor:
+          enabled: true
+
     grafana:
       enabled: false
       forceDeployDashboards: true
