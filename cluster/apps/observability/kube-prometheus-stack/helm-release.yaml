@@ -171,9 +171,9 @@ spec:
     kube-state-metrics:
       selfMonitor:
         enabled: true
-      prometheus:
-        monitor:
-          enabled: true
+      # prometheus:
+      #   monitor:
+      #     enabled: true
 
     grafana:
       enabled: false
