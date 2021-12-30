@@ -21,11 +21,19 @@ spec:
 
     prometheus:
       prometheusSpec:
-        nodeSelector:
-          kubernetes.io/arch: arm64
-          matchExpressions:
-          - {key: node-role.kubernetes.io/control-plane, operator: DoesNotExist}
-
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: node-role.kubernetes.io/control-plane
+                  operator: NotIn
+                  values:
+                  - "true"
+                - key: kubernetes.io/arch
+                  operator: In
+                  values:
+                  - arm64
         resources:
           requests:
             memory: 512Mi
