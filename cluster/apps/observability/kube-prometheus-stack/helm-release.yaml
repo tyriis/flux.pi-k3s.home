@@ -21,6 +21,10 @@ spec:
 
     prometheus:
       prometheusSpec:
+        nodeSelector:
+          matchExpressions:
+          - {key: node-role.kubernetes.io/control-plane, operator: DoesNotExist}
+
         resources:
           requests:
             memory: 512Mi
@@ -39,7 +43,7 @@ spec:
         podMonitorNamespaceSelector: {}
         podMonitorSelectorNilUsesHelmValues: false
         retention: 2d
-        enableAdminAPI: true
+        enableAdminAPI: false
         walCompression: true
 
         storageSpec:
@@ -48,7 +52,7 @@ spec:
               storageClassName: local-path
               resources:
                 requests:
-                  storage: 25Gi
+                  storage: 10Gi
 
         additionalScrapeConfigs:
         - job_name: node-exporter
@@ -60,40 +64,50 @@ spec:
             # - strg.home:9100
             - cubietruck.home:9100
             # - 192.168.1.1:9100
-        - job_name: esphome
-          # metric_relabel_configs:
-          # - source_labels: [ __name__ ]
-          #   regex: 'my_too_large_metric'
-          #   action: drop
+        - job_name: esphome-switch-irpanel-1
           static_configs:
           - targets:
             - esphome-switch-irpanel-1.home
             labels:
               device: switch-irpanel-1
+        - job_name: esphome-switch-irpanel-2
+          static_configs:
           - targets:
             - esphome-switch-irpanel-2.home
             labels:
               device: switch-irpanel-2
+        - job_name: esphome-switch-bedroom
+          static_configs:
           - targets:
             - esphome-switch-bedroom.home
             labels:
               device: switch-bedroom
+        - job_name: esphome-switch-domiroom
+          static_configs:
           - targets:
             - esphome-switch-domiroom.home
             labels:
               device: switch-domiroom
+        - job_name: esphome-switch-basement
+          static_configs:
           - targets:
             - esphome-switch-basement.home
             labels:
               device: switch-basement
+        - job_name: esphome-switch-alexroom
+          static_configs:
           - targets:
             - esphome-switch-alexroom.home
             labels:
               device: switch-alexroom
+        - job_name: esphome-switch-office
+          static_configs:
           - targets:
             - esphome-switch-office.home
             labels:
               device: switch-office
+        - job_name: esphome-switch-livingroom
+          static_configs:
           - targets:
             - esphome-switch-livingroom.home
             labels:
