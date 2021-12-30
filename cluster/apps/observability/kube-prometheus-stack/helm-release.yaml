@@ -230,7 +230,7 @@ spec:
       #     - group
 
     kubeControllerManager:
-      enabled: true
+      enabled: false
       endpoints:
       - 192.168.1.71
         # - 192.168.1.72
@@ -245,10 +245,10 @@ spec:
       #   insecureSkipVerify: true
 
     kubeScheduler:
-      enabled: true
+      enabled: false
 
     kubeProxy:
-      enabled: true
+      enabled: false
       endpoints:
       - 192.168.1.71
 
