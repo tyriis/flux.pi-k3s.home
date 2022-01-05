@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - hardware/pimoroni-fanshim
   - hardware/zigbee2mqtt
-  # - observability/kube-prometheus-stack
+  - observability/kube-prometheus-stack
   - observability/alertmanager-discord
   - observability/loki
   - observability/promtail

@@ -216,7 +216,7 @@ spec:
           targetLabel: instance
 
     kubeApiServer:
-      enabled: true
+      enabled: false
       # serviceMonitor:
       #   interval: 60s
       #   metricRelabelings:
