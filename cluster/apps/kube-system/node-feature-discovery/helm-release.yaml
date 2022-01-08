@@ -33,7 +33,7 @@ spec:
           usb:
             deviceClassWhitelist:
             # lsusb -v | grep bInterfaceClass
-            - "08"
+            # - "08"
             - "ff"
             deviceLabelFields:
             - "class"
