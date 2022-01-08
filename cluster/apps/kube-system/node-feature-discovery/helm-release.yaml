@@ -32,11 +32,8 @@ spec:
         sources:
           usb:
             deviceClassWhitelist:
-            - "02"
-            - "03"
-            - "0e"
-            - "ef"
-            - "fe"
+            # lsusb -v | grep bInterfaceClass
+            - "08"
             - "ff"
             deviceLabelFields:
             - "class"
@@ -54,3 +51,9 @@ spec:
                 class: ["ff"]
                 vendor: ["10c4"]
                 device: ["ea60"]
+          - name: "asm1153-sata-bridge"
+            matchOn:
+            - usbId:
+                class: ["08"]
+                vendor: ["174c"]
+                device: ["1153"]
