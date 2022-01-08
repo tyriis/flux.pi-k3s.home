@@ -31,10 +31,10 @@ spec:
           - usb
         sources:
           usb:
-            deviceClassWhitelist:
+            deviceClassWhitelist: []
             # lsusb -v | grep bInterfaceClass
             # - "08"
-            - "ff"
+            # - "ff"
             deviceLabelFields:
             - "class"
             - "vendor"
