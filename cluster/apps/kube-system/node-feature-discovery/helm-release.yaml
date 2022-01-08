@@ -16,11 +16,15 @@ spec:
         name: node-feature-discovery-charts
         namespace: flux-system
   values:
+    image:
+      repository: raspbernetes/node-feature-discovery
+      tag: v0.9.0
     worker:
-      nodeSelector:
-        node-role.kubernetes.io/worker: "true"
+      # nodeSelector:
+      #   node-role.kubernetes.io/worker: "true"
       config: |-
         core:
+          sleepInterval: 60s
           sources:
           - custom
           - pci
@@ -44,3 +48,9 @@ spec:
             - pciId:
                 class: ["0300"]
                 vendor: ["8086"]
+           - name: "zigbee"
+              matchOn:
+                - usbId:
+                    class: ["00"]
+                    vendor: ["10c4"]
+                    device: ["ea60"]
