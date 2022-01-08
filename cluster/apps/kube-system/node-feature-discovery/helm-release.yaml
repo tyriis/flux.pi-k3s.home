@@ -27,7 +27,6 @@ spec:
           sleepInterval: 60s
           sources:
           - custom
-          - sata-bridge
           - pci
           - usb
         sources:
@@ -52,8 +51,7 @@ spec:
                 class: ["ff"]
                 vendor: ["10c4"]
                 device: ["ea60"]
-          sata-bridge:
-          - name: "asm1153"
+          - name: "asm1153-sata-bridge"
             matchOn:
             - usbId:
                 class: ["08"]
