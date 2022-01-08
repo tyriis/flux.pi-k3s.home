@@ -45,7 +45,7 @@ spec:
             - pciId:
                 class: ["0300"]
                 vendor: ["8086"]
-          - name: "zigbee"
+          - name: "cc2652rb-zigbee-stick"
             matchOn:
             - usbId:
                 class: ["ff"]
